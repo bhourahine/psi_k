@@ -2,7 +2,7 @@
 # Licensed for use under the MIT License (see LICENSE file)
 
 SHELL=/bin/bash
-SRC=tex/paper.tex
+SRC=tex/dftbplus.tex
 
 all:
 	rubber --pdf --into tex $(SRC)
