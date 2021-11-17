@@ -1,16 +1,16 @@
 # Collaborative LaTeX Writing using Git and Github Actions
 
-[![CI](https://github.com/LKedward/latex-github-collab/actions/workflows/CI.yml/badge.svg)](https://github.com/LKedward/latex-github-collab/actions/workflows/CI.yml) [[__View Paper Preview__](https://github.com/LKedward/latex-github-collab/blob/previews/master/paper.pdf)]
+[![CI](https://github.com/bhourahine/psi_k/actions/workflows/CI.yml/badge.svg)](https://github.com/bhourahine/psi_k/actions/workflows/CI.yml) [[__View Paper Preview__](https://github.com/bhourahine/psi_k/blob/previews/main/dftbplus.pdf)]
 
 A Github repository template for writing LaTeX documents collaboratively with automatic rendering using Github actions.
 
-- Renders the paper on every push to master
-- Renders the paper for pull requests, including latex-diff with master
+- Renders the paper on every push to main
+- Renders the paper for pull requests, including latex-diff with main
 - Calculates document word count for pull requests using texcount
 
 ## Compiling Locally
 
-Compiling locally is possible with any LaTeX distribution; the github actions [workflow](https://github.com/LKedward/latex-github-collab/blob/master/.github/workflows/CI.yml) (Ubuntu 20.04) uses the following packages (all installable via `apt`):
+Compiling locally is possible with any LaTeX distribution; the github actions [workflow](https://github.com/bhourahine/psi_k/blob/main/.github/workflows/CI.yml) (Ubuntu 20.04) uses the following packages (all installable via `apt`):
 
 - `texlive-latex-recommended`
 - `texlive-latex-extra`
@@ -27,10 +27,10 @@ For running the spellcheck, the following packages are required:
 For convenience a Makefile is included which relies on the [rubber](https://gitlab.com/latex-rubber/rubber/) LaTeX wrapper:
 
 ```
-$ make             # generate paper.pdf
+$ make             # generate dftbplus.pdf
 $ make clean       # cleanup
 $ make spellcheck  # run codespell
 $ make count       # run TexCount
-$ make diff        # run latexdiff with master
+$ make diff        # run latexdiff with main
 ```
 
