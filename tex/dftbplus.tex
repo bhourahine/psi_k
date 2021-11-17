@@ -18,8 +18,6 @@
 
 \newcommand{\dftbp}{DFTB+}
 
-\newcommand*{\revision}[1]{\textcolor{purple}{#1}}
-
 \begin{document}
 
 \title{\dftbp{}, a software package for efficient approximate density functional
@@ -261,7 +259,7 @@ with
   \mathrm{d}\mathbf{r} \mathrm{d}\mathbf{r}'
   \mathrm{d}\mathbf{r}'',\label{DFTtaylor}
 \end{eqnarray}
-\revision{with XC being the exchange correlation energy and potential.}
+with XC being the exchange correlation energy and potential.
 %
 Several DFTB models have been implemented, starting from the first order
 non-self-consistent DFTB1\cite{Seifert1996,Porezag1995} (originally called
@@ -274,8 +272,8 @@ DFTB3.\cite{Elstner2007,Yang2007,Gaus2011,Gaus2012}
 The first order DFTB1 method is based on three major approximations: (i) it
 takes only $E^0[\rho_0]$ and $ E^1[\rho_0,\delta \rho]$ from
 Eq.~\eqref{DFTtaylor} into account, (ii) is based on a valence-only minimal
-basis set ($\phi_\mu$) within a \revision{linear combination of atomic orbitals
-  (LCAO)} {\it ansatz}
+basis set ($\phi_\mu$) within a linear combination of atomic orbitals (LCAO)
+{\it ansatz}
 \begin{equation}
   \psi_i=\sum_\mu c_{\mu i}\phi_\mu
 \end{equation}
@@ -293,12 +291,11 @@ confining potential:
 \end{equation}
 This leads to slightly compressed atomic-like orbitals for describing the
 density in bonding situations. The actual values for $r_0$ are usually given in
-the publications describing the specific parameterization.  \revision{The
-  operator $\hat{H}[\rho^0]$ also depends on the superposition of atomic
-  densities, $\rho_A$ (or potentials, $V_A^\text{eff}$) of neutral atoms,
-  $\{A\}$, in the geometry being modeled}.  This density is usually determined
-from the same atomic KS equations, using a slightly different confinement
-radius, $r_0^\text{d}$.
+the publications describing the specific parameterization.  The operator
+$\hat{H}[\rho^0]$ also depends on the superposition of atomic densities,
+$\rho_A$ (or potentials, $V_A^\text{eff}$) of neutral atoms, $\{A\}$, in the
+geometry being modeled.  This density is usually determined from the same atomic
+KS equations, using a slightly different confinement radius, $r_0^\text{d}$.
 
 
 \paragraph{DFTB matrix elements}
@@ -331,8 +328,8 @@ energy terms,
 \end{eqnarray}
 (see Ref.~\onlinecite{Seifert2012}) which are either determined by comparison
 with DFT calculations\cite{Porezag1995} or fitted to empirical
-data.\cite{Gaus2009} \revision{Forces} are calculated with the Hellmann-Feynman
-theorem and derivatives of the repulsive energy.
+data.\cite{Gaus2009} Forces are calculated with the Hellmann-Feynman theorem and
+derivatives of the repulsive energy.
 
 
 \subsubsection{DFTB2 and DFTB3}
@@ -354,17 +351,17 @@ energy:\cite{Elstner1998}
   \gamma_{AB}(\tau_A,\tau_B,R_{AB}) \Delta q_A \Delta q_B.\label{spin2}
 \end{eqnarray}
 %
-The energy depends on the Mulliken charges $\{q_A\}$ (\revision{where the atomic
-  charge fluctuation, $\Delta q_A = q_A - Z_A$, is with respect to the neutral
-  atom}) which are in turn dependent on the molecular orbital coefficients,
-$c_{\mu i}$. Thus, the resulting equations have to be solved
-self-consistently. At large distances $\gamma_{AB}$ approaches $1/R_{AB}$, while
-at short distances it represents electron-electron interactions within one atom.
-For the limit $R_{AB}\rightarrow 0$ one finds $\tau_A = \frac{16}{5} U_A$, i.e.,
-the so called Hubbard parameter $U_A$ (twice the chemical hardness) is inversely
-proportional to the width of the atomic charge density $\tau_A$. This relation
-is intuitive in that more diffuse atoms (or anions) have a smaller chemical
-hardness. For DFTB the chemical hardness is computed from DFT, not fitted.
+The energy depends on the Mulliken charges $\{q_A\}$ (where the atomic charge
+fluctuation, $\Delta q_A = q_A - Z_A$, is with respect to the neutral atom)
+which are in turn dependent on the molecular orbital coefficients, $c_{\mu
+  i}$. Thus, the resulting equations have to be solved self-consistently. At
+large distances $\gamma_{AB}$ approaches $1/R_{AB}$, while at short distances it
+represents electron-electron interactions within one atom.  For the limit
+$R_{AB}\rightarrow 0$ one finds $\tau_A = \frac{16}{5} U_A$, i.e., the so called
+Hubbard parameter $U_A$ (twice the chemical hardness) is inversely proportional
+to the width of the atomic charge density $\tau_A$. This relation is intuitive
+in that more diffuse atoms (or anions) have a smaller chemical hardness. For
+DFTB the chemical hardness is computed from DFT, not fitted.
 
 The third order terms describe the change of the chemical hardness of an atom
 and are also computed from DFT. A function $\Gamma_{AB}$ results as the
@@ -386,7 +383,6 @@ interactions between hydrogen and first row elements,\cite{Elstner2007} where
 the deviation from the relation between the charge width and the chemical
 hardness, as formulated above, is most pronounced.
 
-\revision{
 The resulting DFTB3 hamiltonian takes the form
 \begin{align}
 H_{\mu\nu} &= H^0_{\mu\nu} + H^2_{\mu\nu}[\gamma^h,\Delta q] + H^3_{\mu\nu}[\Gamma,\Delta q] \qquad{\mu \in A, \nu \in B} \label{dftb3Ham}\\
@@ -397,18 +393,17 @@ H^3_{\mu\nu} &= S_{\mu\nu} \sum\limits_C \left( \frac{\Delta q_A \Gamma_{AC}}{3}
 \end{align}
 where $S_{\mu\nu}$ is the overlap matrix between orbitals $\phi_\mu$ and
 $\phi_\nu$, and $\gamma^h$ is the modified DFTB2 interaction.
-}
 
 \subsubsection{Spin}
 
-\revision{Analogous to DFTB2, expanding the energy with respect to spin
-  fluctuations\cite{Frauenheim2000, Koehler2005, Koehler2001} leads to the spin-polarized expressions for
-  DFTB. By introducing the magnetization density
-  $m(\mathbf{r})=\rho^{\uparrow}(\mathbf{r})-\rho^{\downarrow}(\mathbf{r})$ as
-  difference of the densities of spin-up and spin-down electrons and its
-  corresponding fluctuations ($\delta m(\mathbf{r})$) around the
-  spin-unpolarized reference state ($|m(\mathbf{r})|=0$), a spin dependent term
-  is added to the spin-independent $E^2$ of Eq.~\eqref{DFTtaylor}:
+Analogous to DFTB2, expanding the energy with respect to spin
+fluctuations\cite{Frauenheim2000, Koehler2005, Koehler2001} leads to the
+spin-polarized expressions for DFTB. By introducing the magnetization density
+$m(\mathbf{r})=\rho^{\uparrow}(\mathbf{r})-\rho^{\downarrow}(\mathbf{r})$ as
+difference of the densities of spin-up and spin-down electrons and its
+corresponding fluctuations ($\delta m(\mathbf{r})$) around the spin-unpolarized
+reference state ($|m(\mathbf{r})|=0$), a spin dependent term is added to the
+spin-independent $E^2$ of Eq.~\eqref{DFTtaylor}:
 \begin{eqnarray}
 E^2[\rho_0,(\delta \rho)^2,(\delta m)^2]
   &=& E^2[\rho_0,(\delta \rho)^2] 
@@ -416,68 +411,72 @@ E^2[\rho_0,(\delta \rho)^2,(\delta m)^2]
   \eval{\frac{\delta^2E^{\text{xc}}[\rho,m]}{\delta m(\mathbf{r})^2}}_{\rho_0,m=0}\delta m(\mathbf{r})^2\mathrm{d}\mathbf{r} \label{spin1}
 \end{eqnarray}
 where a local or semi-local $E^{\text{xc}}$ has been assumed.
-}
 
-\revision{Identifying the spin density fluctuations with up- and down-spin
-  Mulliken charge differences, $\Delta p_{Al}$, for angular momentum shell $l$
-  at atom $A$, and approximating the second derivative of
-  $E^{\text{xc}}[\rho,m]$ as an atomic constant $W_{All'}$ (similar to the
-  Hubbard $U_A$), leads to an on-site energy contribution
-  \begin{equation}
-    E^2_{spin}=\frac{1}{2}\sum_{A}\sum_{l \in A} \sum_{l' \in A} W_{All'} \Delta
-    p_{Al}\Delta p_{Al'}.\label{spin3}
-  \end{equation}
-  This term in Eq.~\eqref{spin3} is to be added to Eq.~\eqref{spin2}. It
-  captures the spin-polarization contribution to the total energy and couples
-  different atomic angular momentum shells via a magnetic interaction. The
-  $W_{All'}$ are usually an order of magnitude less than the $U_A$ and are
-  multiplied with a (typically) small $\Delta p_{Al}$, hence inclusion of
-  spin-polarization via Eq.~\eqref{spin3} gives only a small energy
-  contribution. If there is a net imbalance of up- and down-spin electrons in
-  the system, the occupation of electronic states alone carries most of the
-  effect of the unpaired electron(s) without including Eq.~\eqref{spin3}.  The
-  use of Mulliken charges leads to an additional hamiltonian contribution\cite{Koehler2005} to the
-  (now) shell resolved form of Eq.~\eqref{dftb3Ham},
-  \begin{equation}
-    H^{spin\pm}_{\mu\nu} = \pm \frac{S_{\mu\nu}}{2}  \left(
-    \sum\limits_{l'' \in A} W_{All''}\Delta p_{Al''} + \sum\limits_{l'' \in B} W_{Bl'l''}\Delta p_{Bl''}\right)\qquad{\mu \in l
-      \in A, \nu \in l' \in B,}\label{spin4}
-  \end{equation}
-  where the spin up (down) hamiltonian has this term added (subtracted).}
+Identifying the spin density fluctuations with up- and down-spin Mulliken charge
+differences, $\Delta p_{Al}$, for angular momentum shell $l$ at atom $A$, and
+approximating the second derivative of $E^{\text{xc}}[\rho,m]$ as an atomic
+constant $W_{All'}$ (similar to the Hubbard $U_A$), leads to an on-site energy
+contribution
+\begin{equation}
+  E^2_{spin}=\frac{1}{2}\sum_{A}\sum_{l \in A} \sum_{l' \in A} W_{All'} \Delta
+  p_{Al}\Delta p_{Al'}.\label{spin3}
+\end{equation}
+This term in Eq.~\eqref{spin3} is to be added to Eq.~\eqref{spin2}. It captures
+the spin-polarization contribution to the total energy and couples different
+atomic angular momentum shells via a magnetic interaction. The $W_{All'}$ are
+usually an order of magnitude less than the $U_A$ and are multiplied with a
+(typically) small $\Delta p_{Al}$, hence inclusion of spin-polarization via
+Eq.~\eqref{spin3} gives only a small energy contribution. If there is a net
+imbalance of up- and down-spin electrons in the system, the occupation of
+electronic states alone carries most of the effect of the unpaired electron(s)
+without including Eq.~\eqref{spin3}.  The use of Mulliken charges leads to an
+additional hamiltonian contribution\cite{Koehler2005} to the (now) shell
+resolved form of Eq.~\eqref{dftb3Ham},
+\begin{equation}
+  H^{spin\pm}_{\mu\nu} = \pm \frac{S_{\mu\nu}}{2} \left( \sum\limits_{l'' \in A}
+  W_{All''}\Delta p_{Al''} + \sum\limits_{l'' \in B} W_{Bl'l''}\Delta
+  p_{Bl''}\right)\qquad{\mu \in l \in A, \nu \in l' \in B,}\label{spin4}
+\end{equation}
+where the spin up (down) hamiltonian has this term added (subtracted).
 
-\revision{Expanding further to local (not global) up and down spin populations via
-Pauli spinors gives the non-collinear spin model.\cite{doi:10.1021/jp068802p} Eq.~\eqref{spin3} becomes
+Expanding further to local (not global) up and down spin populations via Pauli
+spinors gives the non-collinear spin model.\cite{doi:10.1021/jp068802p}
+Eq.~\eqref{spin3} becomes
 \begin{equation}
 E^2_{spin} = \frac{1}{2}\sum_{A}\sum_{l \in A} \sum_{l' \in A} W_{All'} \Delta \vec{p}_{Al} \cdot \Delta \vec{p}_{Al'},\label{spin3nc}
 \end{equation}
-and the wave-function generalizes to two component spinors. The hamiltonian contributions take the form
+and the wave-function generalizes to two component spinors. The hamiltonian
+contributions take the form
 \begin{equation}
 \left(H^0_{\mu\nu} + H^2_{\mu\nu} + H^3_{\mu\nu}\right) \otimes \mqty(\pmat{0}) + \sum_{i=1}^{3} H^{\sigma_i}_{\mu\nu} \otimes \sigma_i, 
 \end{equation}
-where $\sigma_i$ is the Pauli matrix for spin component $i (= x,y,z)$ and $H^{\sigma_i}$ is constructed from the $i^\mathrm{th}$ spin component of $\Delta \vec{p}$. This spin-block two component hamiltonian then also enables spin-orbit
-coupling\cite{doi:10.1021/jp068802p,Hourahine11} to be included in \dftbp{}. The spin-block hamiltonian addition is
+where $\sigma_i$ is the Pauli matrix for spin component $i (= x,y,z)$ and
+$H^{\sigma_i}$ is constructed from the $i^\mathrm{th}$ spin component of $\Delta
+\vec{p}$. This spin-block two component hamiltonian then also enables spin-orbit
+coupling\cite{doi:10.1021/jp068802p,Hourahine11} to be included in \dftbp{}. The
+spin-block hamiltonian addition is
 \begin{equation}
 H_{\mu\nu}^{L \cdot S} = \frac{S_{\mu\nu}}{2} \otimes\left(  \xi_{Al} \mqty( L_z & L^-\\ L^+ & - L_z )_l + \xi_{Bl'} \mqty( L_z & L^-\\ L^+ & - L_z )_{l'} \right)\qquad{\mu \in l\in A, \nu \in l' \in B}
 \end{equation}
-where $\xi_{Al}$ is the spin orbit coupling constant for shell $l$ of atom $A$ with $L^\pm$ and $L_z$ the angular momentum operators for atomic shells.
-}
+where $\xi_{Al}$ is the spin orbit coupling constant for shell $l$ of atom $A$
+with $L^\pm$ and $L_z$ the angular momentum operators for atomic shells.
 
 \subsubsection{Limitations of the core DFTB-model}
 
-\revision{DFTB is an approximate method, and as such shows limitations, which
-  can be traced back to the different approximations applied.  However, the
-  fitting of Eq.~\eqref{eq:erep} can compensate for some of the inaccuracies.
-  Since up to now only bonding contributions are addressed by the two-center
-  nature of the repulsive potentials, bond-lengths, bond-stretch frequencies and
-  bond-energies can be targeted. Properties such as bond angles or dihedral
-  angles can not be influenced by repulsive pair parameterization.  This is the
-  reason, why DFTB performs better than a fixed minimal basis DFT method, which
-  would be only of limited use in most of the applications. In some cases DFTB
-  can even perform better than double-zeta (DZ) DFT using GGA functionals, as
-  shown e.g.\ in Ref.~\onlinecite{Gaus2012}. This accuracy definitely can be
-  traced back to the parameterization.}
+DFTB is an approximate method, and as such shows limitations, which can be
+traced back to the different approximations applied.  However, the fitting of
+Eq.~\eqref{eq:erep} can compensate for some of the inaccuracies.  Since up to
+now only bonding contributions are addressed by the two-center nature of the
+repulsive potentials, bond-lengths, bond-stretch frequencies and bond-energies
+can be targeted. Properties such as bond angles or dihedral angles can not be
+influenced by repulsive pair parameterization.  This is the reason, why DFTB
+performs better than a fixed minimal basis DFT method, which would be only of
+limited use in most of the applications. In some cases DFTB can even perform
+better than double-zeta (DZ) DFT using GGA functionals, as shown e.g.\ in
+Ref.~\onlinecite{Gaus2012}. This accuracy definitely can be traced back to the
+parameterization.
 
-\paragraph{Integral approximations} \revision{There are some approximations
+\paragraph{Integral approximations} There are some approximations
 in DFTB which can not be compensated by parameterization, effecting e.g.\ bond
 angles and dihedrals, which on average show an accuracy slightly less than
 DFT/DZ. Further, the integral approximation leads to an imbalanced description
@@ -491,26 +490,25 @@ frequencies.  Similarly, description of different crystal phases with the same
 chemical composition but with very different coordination numbers can be
 challenging. Recent examples show,\cite{Hellstrom2013,Fihey2015} however, that
 it is possible to reach a reasonable accuracy if special care is taken during
-the parameterization process.}
+the parameterization process.
 
 \paragraph{Minimal basis set}
-\revision{The minimal basis set used has several clear limitations, which show
-  up in the overall DFTB performance: First, for a good description of hydrogen
-  in different bonding situations, relatively diffuse wave functions have to be
-  chosen.  For this atomic wave-function however, the H$_2$ atomization energy
-  is in error, which is dealt with by an {\it ad hoc} solution, again providing a
-  special repulsive parameter set.\cite{Gaus2012} Further, nitrogen
-  hybridization and proton affinities require at least the inclusion of
-  $d$-orbitals in the basis set: this again can be compensated by a special
-  parameter set, which has to be applied under certain
-  conditions.\cite{Gaus2012} A similar problem occurs for highly coordinated
-  phosphorus containing species.\cite{Gaus2015} The minimal basis can become
-  also problematic when describing the high lying (conduction band) states in
-  solids. For example, silicon needs $d$-orbitals in order to describe the
-  conduction band minimum properly. The valence band, on the other hand, can be
-  reasonably described with an $sp$-only basis.}
+The minimal basis set used has several clear limitations, which show up in the
+overall DFTB performance: First, for a good description of hydrogen in different
+bonding situations, relatively diffuse wave functions have to be chosen.  For
+this atomic wave-function however, the H$_2$ atomization energy is in error,
+which is dealt with by an {\it ad hoc} solution, again providing a special
+repulsive parameter set.\cite{Gaus2012} Further, nitrogen hybridization and
+proton affinities require at least the inclusion of $d$-orbitals in the basis
+set: this again can be compensated by a special parameter set, which has to be
+applied under certain conditions.\cite{Gaus2012} A similar problem occurs for
+highly coordinated phosphorus containing species.\cite{Gaus2015} The minimal
+basis can become also problematic when describing the high lying (conduction
+band) states in solids. For example, silicon needs $d$-orbitals in order to
+describe the conduction band minimum properly. The valence band, on the other
+hand, can be reasonably described with an $sp$-only basis.
 
-\paragraph{Basis set confinement} \revision{As a result of the orbital confinement, Pauli
+\paragraph{Basis set confinement} As a result of the orbital confinement, Pauli
 repulsion forces are underestimated, which leads to DFTB non-bonding
 interactions being on average too short by 10-15$\%$. This has been investigated
 in detail for liquid water, where a different repulsive potential has been
@@ -523,12 +521,12 @@ basis sets have to be used.\cite{Kubas2014} Similarly, it can be challenging to
 find a good compromise for the basis confinement when describing 2D-layered
 materials. As the inter-layer distances are significantly longer than the
 intra-layer ones, the binding between the layers often becomes weaker compared
-to DFT.}
+to DFT.
 
-\paragraph{DFT inherited weaknesses} \revision{DFTB is derived from DFT and uses standard
+\paragraph{DFT inherited weaknesses} DFTB is derived from DFT and uses standard
 DFT functionals, which also come with some well known limitations. There,
 several strategies applied within DFT are also viable for DFTB, as discussed
-below in more detail.}
+below in more detail.
 
 
 \subsection{Density matrix functionals}
@@ -602,20 +600,20 @@ systems,\cite{doi:10.1002/pssc.200778667} DFTB+U gives excellent agreement with
 GGA+U.\cite{doi:10.1063/1.5085190} A closely related correction,
 pseudo-SIC,\cite{PhysRevB.67.125109} where the local part of the
 self-interaction is removed, modifying only the occupied orbitals, is also
-available.  \revision{These approximations lower the energies of occupied atomic
-  orbitals within specified atomic shells, with the aim of removing
-  self-interaction or more accurately representing self-energy. But as with its
-  use in DFT, this approximation suffers from three main drawbacks. Firstly the
-  form of the correction depends on the choice of double counting
-  removal.\cite{PhysRevB.79.035103} The correlation is also mean-field in
-  nature, hence all equally filled orbitals within a shell receive the same
-  correction and therefore cases not well described by a single determinant are
-  not systematically improved. Finally, the choice of the $U$ (and $J$) values
-  is not necessarily obvious, with a number of different empirical, linear
-  response and self-consistent choices possible. Specific to
-  DFTB\cite{doi:10.1021/acs.jpcc.6b10557} the $U$ values may also require
-  co-optimization with the repulsive parameters, in particular for systems where
-  the electronic structure is geometrically sensitive.}
+available.  These approximations lower the energies of occupied atomic orbitals
+within specified atomic shells, with the aim of removing self-interaction or
+more accurately representing self-energy. But as with its use in DFT, this
+approximation suffers from three main drawbacks. Firstly the form of the
+correction depends on the choice of double counting
+removal.\cite{PhysRevB.79.035103} The correlation is also mean-field in nature,
+hence all equally filled orbitals within a shell receive the same correction and
+therefore cases not well described by a single determinant are not
+systematically improved. Finally, the choice of the $U$ (and $J$) values is not
+necessarily obvious, with a number of different empirical, linear response and
+self-consistent choices possible. Specific to
+DFTB\cite{doi:10.1021/acs.jpcc.6b10557} the $U$ values may also require
+co-optimization with the repulsive parameters, in particular for systems where
+the electronic structure is geometrically sensitive.
 
 \subsubsection{Long-range corrected hybrid functionals}
 
@@ -662,14 +660,13 @@ LC-DFTB method (LC-DFTB/SSR)\cite{Lee19} since a long-range corrected functional
 is crucial to correctly describe electronic structure particularly for the
 excited states (see Ref.~\onlinecite{Lee19} for details of the formalism).
 Spin-polarization parameters are also required to describe open-shell
-microstates.  \revision{It was observed that LC-DFTB/SSR sometimes gives
-  different stability of the open-shell singlet microstates from the
-  conventional SSR results, depending on excitation characters. In such case, a
-  simple scaling of atomic spin constants is helpful to account for correct
-  excitation energies} (see Ref.~\onlinecite{Lee19} for the required scaling of
-spin constants).  The LC-DFTB/SSR method can be extended in the future by using
-larger active spaces or with additional corrections such as the onsite or DFTB3
-terms.
+microstates.  It was observed that LC-DFTB/SSR sometimes gives different
+stability of the open-shell singlet microstates from the conventional SSR
+results, depending on excitation characters. In such case, a simple scaling of
+atomic spin constants is helpful to account for correct excitation energies (see
+Ref.~\onlinecite{Lee19} for the required scaling of spin constants).  The
+LC-DFTB/SSR method can be extended in the future by using larger active spaces
+or with additional corrections such as the onsite or DFTB3 terms.
 
 \subsubsection{Non-covalent interactions}
 
@@ -870,14 +867,14 @@ for a deeper discussion). Gradients can also be calculated with TD-LC-DFTB,
 making it possible to perform geometry optimizations and MD simulations in
 singlet excited states.
 
-\revision{Please note that energetically high lying states and Rydberg
-  excitations are clearly outside of the scope of TD(-LC)-DFTB since their
-  description generally requires very diffuse basis sets. Apart from this class,
-  the photochemically more relevant set of low energy valence excitations are
-  predicted with similar accuracy to first principles TD-DFT, as several
-  benchmarks indicate.\cite{trani2011time,Dominguez2013,fihey2019performances}
-  As mentioned above, charge-transfer excitations can now be also treated using
-  TD-LC-DFTB.\cite{Kranz2017}}
+Please note that energetically high lying states and Rydberg excitations are
+clearly outside of the scope of TD(-LC)-DFTB since their description generally
+requires very diffuse basis sets. Apart from this class, the photochemically
+more relevant set of low energy valence excitations are predicted with similar
+accuracy to first principles TD-DFT, as several benchmarks
+indicate.\cite{trani2011time,Dominguez2013,fihey2019performances} As mentioned
+above, charge-transfer excitations can now be also treated using
+TD-LC-DFTB.\cite{Kranz2017}
 
 \subsubsection{SSR and excitations}
 \label{para:ssrxc}
@@ -885,13 +882,14 @@ singlet excited states.
 Currently, the SSR method implemented in \dftbp{} is formulated for active
 spaces including two electrons in two fractionally occupied orbitals (i.e.,
 SSR(2,2)) which is suitable for a singlet ground state and the lowest singlet
-excited state as well as a doubly excited state.\cite{Lee19}  In addition, since the SSR
-method is based on an ensemble representation and includes the electronic
-correlation it can give correct state-interactions among nearly degenerate
-electronic states. Thus, SSR approach is useful to investigate conical
-intersections. The LC-DFTB/SSR method \revision{with scaled spin constants} can accurately describe the ground and
-excited states \revision{including $\pi/\pi*$ or $n/\pi*$ character}, undergoing bond cleavage/bond formation reactions as well as the
-conical intersections where the conventional (TD)DFTB fails to obtain the
+excited state as well as a doubly excited state.\cite{Lee19} In addition, since
+the SSR method is based on an ensemble representation and includes the
+electronic correlation it can give correct state-interactions among nearly
+degenerate electronic states. Thus, SSR approach is useful to investigate
+conical intersections. The LC-DFTB/SSR method with scaled spin constants can
+accurately describe the ground and excited states including $\pi/\pi*$ or
+$n/\pi*$ character, undergoing bond cleavage/bond formation reactions as well as
+the conical intersections where the conventional (TD)DFTB fails to obtain the
 electronic properties. Analytic energy gradients as well as non-adiabatic
 couplings are also available.
 
@@ -983,19 +981,18 @@ nanoparticles of 1-2~nm in diameter \cite{Bonafe2017a} and the simulation of
 transient absorption pump-probe spectra in
 molecules.\cite{Bonafe2018,Hernandez2019}
 
-\revision{Whenever a time propagation approach is used for the calculation of
-  absorption spectra in the linear regime, this method is equivalent to
-  calculations using the Casida formalism and shares its strengths and
-  limitations. Specific pitfalls of the time dependent approach come into play
-  whenever simulating the response to intense external fields. In these cases
-  the poor description of highly lying excited states due to the use of a
-  minimal basis set would likely be inaccurate if these states are populated
-  during the dynamics.}
+Whenever a time propagation approach is used for the calculation of absorption
+spectra in the linear regime, this method is equivalent to calculations using
+the Casida formalism and shares its strengths and limitations. Specific pitfalls
+of the time dependent approach come into play whenever simulating the response
+to intense external fields. In these cases the poor description of highly lying
+excited states due to the use of a minimal basis set would likely be inaccurate
+if these states are populated during the dynamics.
 
 \subsubsection{pp-RPA}
 
-\revision{An approximate particle-particle RPA scheme, the so called
-pp-DFTB,\cite{Kranz2017} is now implemented in DFTB+.}  Particle-particle RPA,
+An approximate particle-particle RPA scheme, the so called
+pp-DFTB,\cite{Kranz2017} is now implemented in DFTB+. Particle-particle RPA,
 based on the pairing matrix fluctuation formalism, has been shown to be an
 efficient approach for the accurate description of double and charge-transfer
 (CT) excitations involving the highest occupied molecular orbital (HOMO) (see
@@ -1005,10 +1002,10 @@ complexes. TD-LC-DFTB has the advantage that transitions do not necessarily have
 to involve the HOMO of the system. Alternatively pp-DFTB does not require
 parameter tuning and is efficient for the lowest lying excitations.
 
-\revision{Although one of the strengths of the original pp-RPA formulation lies
-  on the accurate description of Rydberg excitations, our approximate formalism
-  based on DFTB fails to describe these kind of transitions, as explained above
-  in section~\ref{sec:TD-DFTB}.}
+Although one of the strengths of the original pp-RPA formulation lies on the
+accurate description of Rydberg excitations, our approximate formalism based on
+DFTB fails to describe these kind of transitions, as explained above in
+section~\ref{sec:TD-DFTB}.
 
 \subsubsection{Coupled perturbed responses}
 
@@ -1122,24 +1119,23 @@ electron-phonon coupling,\cite{pecchia2004b, pecchia2007, penazzi2016,
   gagliardi2008} electron-photon coupling, spin polarized transport and phonon
 transport.\cite{medrano15b, medrano16, Martinez19, MedranoRev}
 
-\revision{Overall, DFTB-NEGF shares many similarities with DFT based
-  implementations, and it also inherits some shortcomings the less experienced
-  users should be aware of. For example, the open boundary treatment demands
-  that external and non-equilibrium potentials are screened at the boundaries
-  \cite{haug2008}.  Therefore, the simulated system should be large enough
-  compared to the screening length.  This condition is easily achieved with bulk
-  metallic electrodes, but it can be difficult with low dimensional systems
-  which exhibit poor screening. When this condition is not fulfilled, unphysical
-  discontinuities in the potential may be obtained. Also, compared to band
-  structure calculations, NEGF tends to converge with more
-  difficulty.\cite{ozaki2010} Aside from these common challenges, it is
-  important that for DFTB-NEGF calculations any set of parameters should be
-  evaluated by verifying at the least band structure properties in the energy
-  range of interest. DFTB parameters fitted to reproduce total energies and
-  forces might be excellent in those application but lack the necessary accuracy
-  in the band structure. Depending on the degree of accuracy required, an {\it
-    ad hoc} fitting for transport calculations could also be necessary, as for
-  example in the case of silicon.\cite{markov2015b}}
+Overall, DFTB-NEGF shares many similarities with DFT based implementations, and
+it also inherits some shortcomings the less experienced users should be aware
+of. For example, the open boundary treatment demands that external and
+non-equilibrium potentials are screened at the boundaries \cite{haug2008}.
+Therefore, the simulated system should be large enough compared to the screening
+length.  This condition is easily achieved with bulk metallic electrodes, but it
+can be difficult with low dimensional systems which exhibit poor screening. When
+this condition is not fulfilled, unphysical discontinuities in the potential may
+be obtained. Also, compared to band structure calculations, NEGF tends to
+converge with more difficulty.\cite{ozaki2010} Aside from these common
+challenges, it is important that for DFTB-NEGF calculations any set of
+parameters should be evaluated by verifying at the least band structure
+properties in the energy range of interest. DFTB parameters fitted to reproduce
+total energies and forces might be excellent in those application but lack the
+necessary accuracy in the band structure. Depending on the degree of accuracy
+required, an {\it ad hoc} fitting for transport calculations could also be
+necessary, as for example in the case of silicon.\cite{markov2015b}
 
 \subsection{Extended Lagrangian Born-Oppenheimer dynamics}
 
@@ -1242,8 +1238,8 @@ first parameterization, GFN1-xTB, covers all elements up to $Z=86$ and is now
 supported in \dftbp{}. Its successor, GFN2-xTB,\cite{bannwarth2019} will also be
 made available in the future.
 
-We briefly outline the xTB methods, for a more detailed discussion \revision{and
-  comparison to other methods} we refer to
+We briefly outline the xTB methods, for a more detailed discussion and
+comparison to other methods we refer to
 Refs.~\onlinecite{grimme2017,bannwarth2019}.  The xTB core hamiltonian is
 constructed in a partially polarized STO-\textit nG basis set with diagonal
 terms made flexible by adding a dependence on the local chemical environment
@@ -1270,11 +1266,13 @@ include force-field-like corrections as in DFTB or GFN1-xTB. It is planned to im
 in \dftbp{} to enable GFN2-xTB and other generalized DFTB
 models.\cite{Bodrog2012}
 
-\revision{
-GFN1-xTB and GFN2-xTB have been extensively tested for their target properties,\cite{bannwarth2019} further studies regarding structures for lanthanoid complexes\cite{bursch2017} and transition metal complexes\cite{bursch2019} have shown xTB methods to be robust for all its parameterized elements.
-Errors in this methods are very systematic, which can be used to devise correction schemes for off-target properties like reaction enthalpies.\cite{kromann2018}
-}
-
+GFN1-xTB and GFN2-xTB have been extensively tested for their target
+properties,\cite{bannwarth2019} further studies regarding structures for
+lanthanoid complexes\cite{bursch2017} and transition metal
+complexes\cite{bursch2019} have shown xTB methods to be robust for all its
+parameterized elements.  Errors in this methods are very systematic, which can
+be used to devise correction schemes for off-target properties like reaction
+enthalpies.\cite{kromann2018}
 
 \subsection{DFTB parameterization}
 
@@ -1282,9 +1280,9 @@ Errors in this methods are very systematic, which can be used to devise correcti
 
 \paragraph{Electronic parameters}
 
-The electronic parameterization for \revision{DFTB} involves two principal
-steps. First, the compressed atomic densities and the atomic basis functions
-have to be determined (a one-center problem), followed by the calculation of the
+The electronic parameterization for DFTB involves two principal steps. First,
+the compressed atomic densities and the atomic basis functions have to be
+determined (a one-center problem), followed by the calculation of the
 hamiltonian and overlap elements at various distances (a two-center
 problem). The compressed densities and wave-functions come from solving a
 Kohn-Sham-problem for a single atom with an additional confinement potential
@@ -1296,13 +1294,13 @@ the Hartree-Fock theory based atomic problem \cite{roothan-rmp-1960a,
   roothan-rmp-1960b} extended with the possibility of including DFT
 exchange-correlation potentials via the libxc library\cite{libxc} and scalar
 relativistic effects via the zero-order relativistic approximation
-(ZORA).\cite{vanLenthe1993} The resulting densities and atomic wave-functions are
-stored on a grid. The two-center integration tool reads those grid-based
+(ZORA).\cite{vanLenthe1993} The resulting densities and atomic wave-functions
+are stored on a grid. The two-center integration tool reads those grid-based
 quantities and calculates the hamiltonian and overlap two-center integrals for
 various distances using the Becke-method.\cite{becke-jcp-1988}
 
 
-\paragraph{Repulsive parameters} \revision{Once the electronic parameters for
+\paragraph{Repulsive parameters} Once the electronic parameters for
   certain species have been determined, the first three terms of
   Eq.~\eqref{eq:etot} can be calculated for any systems composed of those
   species. The missing fourth term, the repulsive energy, is composed of
@@ -1320,7 +1318,7 @@ various distances using the Becke-method.\cite{becke-jcp-1988}
   a few simple) reference systems, the optimal repulsive function can be
   determined manually, while for more complex scenarios, usually semi-automatic
   approaches\cite{Gaus2009, Hellstrom2013, Vuong2018, skpar-repo, adpt-repo} are
-  used.}
+  used.
 
 
 
@@ -1661,12 +1659,11 @@ and is aimed towards \ce{Li}-ion battery modeling.
 
 In order to enable flexible general communication with various types of external
 components (external drivers, QM/MM, machine learning models, $\ldots$), we are
-in the process of developing a communication
-library\revision{,\cite{saydx-repo}} which allows for data exchange between
-mixed language (e.g.\ Fortran and C) components via API-bindings as well as
-between different processes via socket communications. After engagement with
-other stakeholders this will be released as a set of BSD-licensed tools and a
-library.
+in the process of developing a communication library,\cite{saydx-repo} which
+allows for data exchange between mixed language (e.g.\ Fortran and C) components
+via API-bindings as well as between different processes via socket
+communications. After engagement with other stakeholders this will be released
+as a set of BSD-licensed tools and a library.
 
 
 \section{Software engineering in \dftbp{}}
