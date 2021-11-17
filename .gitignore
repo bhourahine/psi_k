@@ -7,5 +7,5 @@ tex/*.pdf
 tex/*.synctex.gz
 tex/*.txt
 tex/*.eps
-tex/paper-diff*
-tex/dftbplusNotes.bib
+tex/dftbplus-diff*
+tex/*Notes.bib
