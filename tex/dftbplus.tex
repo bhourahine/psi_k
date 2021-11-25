@@ -221,7 +221,7 @@ effectively offers a reduced complexity DFT method, being derived from a
 simplification of Kohn-Sham DFT to a tight binding
 form.\cite{ElstnerSeifertBBA2014}
 
-This paper describes the \dftbp{} code,\cite{dftbplus-repo} an
+This article describes the \dftbp{} code,\cite{dftbplus-repo} an
 open source implementation which aims to collect the developments of this
 family of methods and make them generally available to the chemical, materials
 and condensed matter communities. This article describes extensions to this
@@ -232,10 +232,10 @@ lack of a more recent overview of its features and underlying theory.
 
 \subsection{The core DFTB-model}
 
-The basic DFTB-equations are presented below. They can be easily
-generalized for periodic cases ($k$-points) as well as for other boundary
-conditions, as implemented in \dftbp{}. All equations throughout the paper are
-given in atomic units with Hartree as the energy unit.
+The basic DFTB-equations are presented below. They can be easily generalized for
+periodic cases ($k$-points) as well as for other boundary conditions, as
+implemented in \dftbp{}. All equations throughout are given in atomic units with
+Hartree as the energy unit.
 
 \subsubsection{Expansion of the total energy}
 
@@ -1379,53 +1379,6 @@ $2^\text{nd}$ order trace-resetting purification method
 (TRS2)\cite{ANiklasson02} used here. While PEXSI is not
 particularly suited for 3D systems, NTPoly offers an alternative as long as the
 system has a non-trivial energy gap.
-
-
-\subsection{Order-N scaling with the SP2 solver}
-
-The SP2 (second-order recursive spectral projection
-expansion),\cite{ANiklasson02} which is valid at zero electronic temperature
-when $\sfrac{1}{k_BT} \rightarrow \infty$, recursively expands a Heaviside step function
-to project the (occupied) density matrix:
-\begin{equation}
-  \rho = \lim_{n \rightarrow \infty} F_n(F_{n-1}(\ldots F_0(H^\perp)\ldots )),
-\end{equation}
-where $H^\perp$ is the hamiltonian transformed into an orthogonalized basis,
-given by the congruence transformation, $H^\perp = Z^T HZ$. Each iteration of
-the SP2 Fermi-operator expansion consists of a generalized matrix-matrix
-multiplication that can be performed using thresholded sparse matrix algebra. In
-this way the computational complexity in each iteration can be reduced to $O(N)$
-for sufficiently large sparse matrices. Notice, we cannot expect linear scaling
-complexity for metals, since the inter-atomic elements of the density matrix
-decay algebraically instead of exponentially.\cite{SGoedecker99} The spectral
-projection functions in the SP2 expansion can be chosen to correct $\Tr (\rho)$
-such that the step is formed automatically around the chemical potential
-separating the occupied from the unoccupied states.\cite{ANiklasson02} Obtaining
-the congruence matrix, $Z$, introduces a potential $O(N^3)$
-bottleneck. To avoid this, the sparsity of $S$ can be exploited and the $Z$
-matrix can be obtained recursively with linear scaling complexity applying the
-``ZSP method'' developed in Refs.~\cite{CNegre16,ANiklasson04B}.
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=8cm]{./figures/dftb-ordern1.pdf}
-  \caption{CPU time for the density matrix construction for different varying
-    sizes of water box systems. Regular diagonalization (black curve) was
-    compared to SP2 method (red curve). A numerical threshold of $10^{-5}$ was
-    used in the sparse matrix-matrix multiplications of the SP2 algorithm.}
-  \label{fig:SP2}
-\end{figure}
-
-Several versions of the SP2 algorithm can be found in the PROGRESS
-library,\cite{niklasson2016progress} which uses the Basic Matrix Library (BML)
-\cite{bml,bml2} for the thresholded sparse matrix-matrix operations. The matrix
-data structure is based on the ELLPACK-R sparse matrix format, which allows
-efficient shared memory parallelism on a single node.\cite{SMniszewski15} The
-\dftbp{} code was modified to use the LANL PROGRESS library and in particular
-the SP2 and ZSP algorithms. In combination with XL-BOMD this allows efficient
-energy-conserving, molecular dynamics simulations, where the computational cost
-scales only linearly with the system size. Figure~\ref{fig:SP2} shows the
-performance of the SP2 algorithm compared to regular diagonalization.
-
 
 \subsection{GPU computing}
 
