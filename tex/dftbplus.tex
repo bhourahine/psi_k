@@ -2,7 +2,7 @@
 %%% USE 80 character line lengths with linebreaks (Emacs-style)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass{revtex4-1}
+\documentclass[reprint,onecolumn,superscriptaddress]{revtex4-1}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -13,6 +13,8 @@
 \usepackage{gensymb}
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
+
+\usepackage[hidelinks]{hyperref}
 
 \graphicspath{{./figures/}}
 
@@ -27,7 +29,7 @@
   of Strathclyde, Glasgow, G4 0NG, United Kingdom}
 
 \author{B. Aradi}
-\email[corresponding author, e-mail:~]{aradi@uni-bremen.de}
+%\email[corresponding author, e-mail:~]{aradi@uni-bremen.de}
 \affiliation{Bremen Center for Computational Materials Science, University of
   Bremen, Bremen, Germany}
 
@@ -192,6 +194,15 @@
   capabilities of the \dftbp{} code, demonstrating with a few use case examples,
   discuss the strengths and weaknesses of the various features and discuss
   on-going developments and possible future perspectives.
+
+  \bigskip
+
+  \noindent
+  This $\Psi_k$ Scientific Highlight has been adapted from
+  \href{https://doi.org/10.1063/1.5143190}{\color{blue}{J. Chem.\ Phys.\ 152, 124101 (2020)}}
+  with the permission of AIP Publishing and is licenced under
+  \href{http://creativecommons.org/licenses/by/4.0/}{\color{blue}{CC BY 4.0}}.
+
 \end{abstract}
 
 
@@ -326,7 +337,7 @@ energy terms,
   E^0[\rho_0] \approx E_\text{rep} = \frac{1}{2}\sum_{AB}V^{\text{rep}}_{AB},
   \label{eq:erep}
 \end{eqnarray}
-(see Ref.~\onlinecite{Seifert2012}) which are either determined by comparison
+(see Ref.~\cite{Seifert2012}) which are either determined by comparison
 with DFT calculations\cite{Porezag1995} or fitted to empirical
 data.\cite{Gaus2009} Forces are calculated with the Hellmann-Feynman theorem and
 derivatives of the repulsive energy.
@@ -473,7 +484,7 @@ influenced by repulsive pair parameterization.  This is the reason, why DFTB
 performs better than a fixed minimal basis DFT method, which would be only of
 limited use in most of the applications. In some cases DFTB can even perform
 better than double-zeta (DZ) DFT using GGA functionals, as shown e.g.\ in
-Ref.~\onlinecite{Gaus2012}. This accuracy definitely can be traced back to the
+Ref.~\cite{Gaus2012}. This accuracy definitely can be traced back to the
 parameterization.
 
 \paragraph{Integral approximations} There are some approximations
@@ -515,7 +526,7 @@ in detail for liquid water, where a different repulsive potential has been
 suggested.\cite{Goyal2014} A related problem concerns molecular
 polarizabilities, which are underestimated using a minimal basis set. Approaches
 to correct for this short-coming have been summarized recently in
-Ref.~\onlinecite{Christensen2016}. The too-confined range of basis functions
+Ref.~\cite{Christensen2016}. The too-confined range of basis functions
 also impairs the calculation of electron-transfer couplings. Here, unconfined
 basis sets have to be used.\cite{Kubas2014} Similarly, it can be challenging to
 find a good compromise for the basis confinement when describing 2D-layered
@@ -575,7 +586,7 @@ description of hydrogen bonds in neutral, protonated and hydroxide water
 clusters, as well as other water-containing complexes.\cite{Dominguez2015}
 
 The onsite-corrected DFTB requires additional atomic parameters, these are not
-tunable but computed numerically using DFT (see Ref.~\onlinecite{Dominguez2013}
+tunable but computed numerically using DFT (see Ref.~\cite{Dominguez2013}
 for details in their evaluation). Onsite parameter for some chemical elements
 can be found in the \dftbp{} manual. The calculation requires convergence in the
 dual density populations. This is a somewhat heavier convergence criterion than
@@ -630,7 +641,7 @@ The short range contribution is treated in a local or semi-local density
 functional approximation, while the long range term gives rise to a Hartree-Fock
 like exchange term in the hamiltonian.\cite{Baer2010} The necessary adaptions
 for the DFTB method (termed LC-DFTB) were introduced in
-Refs.~\onlinecite{Niehaus2012,Lutsker2015}. Note that quite generally for \dftbp{},
+Refs.~\cite{Niehaus2012,Lutsker2015}. Note that quite generally for \dftbp{},
 the exchange-correlation functional is effectively chosen by loading the
 appropriate Slater-Koster files created for the desired level of theory. This
 also holds for LC-DFTB, where different values for the range-separation
@@ -658,13 +669,13 @@ character and can accurately calculate excitation energies between them
 (see~\ref{para:ssrxc}). The SSR method is formulated in the context of the
 LC-DFTB method (LC-DFTB/SSR)\cite{Lee19} since a long-range corrected functional
 is crucial to correctly describe electronic structure particularly for the
-excited states (see Ref.~\onlinecite{Lee19} for details of the formalism).
+excited states (see Ref.~\cite{Lee19} for details of the formalism).
 Spin-polarization parameters are also required to describe open-shell
 microstates.  It was observed that LC-DFTB/SSR sometimes gives different
 stability of the open-shell singlet microstates from the conventional SSR
 results, depending on excitation characters. In such case, a simple scaling of
 atomic spin constants is helpful to account for correct excitation energies (see
-Ref.~\onlinecite{Lee19} for the required scaling of spin constants).  The
+Ref.~\cite{Lee19} for the required scaling of spin constants).  The
 LC-DFTB/SSR method can be extended in the future by using larger active spaces
 or with additional corrections such as the onsite or DFTB3 terms.
 
@@ -726,14 +737,15 @@ metal-containing systems, the introduced charge dependence improves
 thermochemical properties.\cite{bursch2019} Large improvements can also be
 observed for solid-state polarizabilities of inorganic
 salts.\cite{caldeweyher2020} For a full discussion on the methodology behind D4
-we refer the reader to Ref.~\onlinecite{caldeweyher2019} and the implementation
-details presented in Ref.~\onlinecite{caldeweyher2020}. The damping parameters
-for several Slater--Koster sets can be found in the supplementary material.
+we refer the reader to Ref.~\cite{caldeweyher2019} and the implementation
+details presented in Ref.~\cite{caldeweyher2020}. The damping parameters
+for several Slater--Koster sets can be found in the supplementary material of
+Ref.~\cite{hourahine-JCP-152-124101}.
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth]{figures/s30l-boxplot.pdf}
   \caption{\label{fig:d4-s30l} Performance of different dispersion corrected
     tight binding methods on the S30L benchmark set, the values for SCAN-D4 are
-    taken from Ref.~\onlinecite{caldeweyher2019}.}
+    taken from Ref.~\cite{caldeweyher2019}.}
 \end{figure}
 
 To investigate the performance of the DFTB-D4 parameterizations we evaluate the
@@ -754,15 +766,16 @@ and the density dependent D4 dispersion, giving a MAD of 3.6\;kcal/mol.
 
 \paragraph{Tkatchenko-Scheffler (TS) dispersion}
 
-The Tkatchenko-Scheffler correction (TS)\cite{Tkatchenko2009} includes vdW 
-interactions as London-type atom-pairwise $C_6/R^6$-potentials with damping at 
-short inter-atomic separations, where the electronic structure method
-already captures electron correlation. Suggested damping parameters for the mio and 3ob parameter sets are listed in the supplementary material.
-In the TS approach, all vdW parameters including the static atomic dipole 
-polarizability, $\alpha$, and $C_6$-dispersion coefficients depend on the local 
-electronic structure and the chemical environment.\cite{Tkatchenko2009} 
-High-accuracy \textit{in vacuo} reference values (below labeled by vac) are 
-rescaled via
+The Tkatchenko-Scheffler correction (TS)\cite{Tkatchenko2009} includes vdW
+interactions as London-type atom-pairwise $C_6/R^6$-potentials with damping at
+short inter-atomic separations, where the electronic structure method already
+captures electron correlation. Suggested damping parameters for the mio and 3ob
+parameter sets are listed in the supplementary material of
+Ref.~\cite{hourahine-JCP-152-124101}. In the TS approach, all vdW parameters
+including the static atomic dipole polarizability, $\alpha$, and
+$C_6$-dispersion coefficients depend on the local electronic structure and the
+chemical environment.\cite{Tkatchenko2009} High-accuracy \textit{in vacuo}
+reference values (below labeled by vac) are rescaled via
 \begin{equation}
   x^2 = \left(\frac{\alpha_A^{\rm eff}}{\alpha_A^{\rm vac}}\right)^2 =
   \frac{C_{6,{\rm eff}}^{AA}}{C_{6,{\rm vac}}^{AA}}\:.
@@ -779,15 +792,16 @@ populations (i.e., $\tr\left(\rho\right)_A - Z_A$) are used to define $x$.
 Going beyond pairwise interactions, MBD\cite{Tkatchenko2012,Ambrosetti2014}
 accounts for many-atom interactions in a dipolar approximation up to infinite
 order in perturbation theory. This is achieved by describing the system as a set
-of coupled polarizable dipoles\cite{Tkatchenko2012} with rescaled \textit{in vacuo}
-reference polarizabilities (as in Eq.~\eqref{eq:MBDTS_effective_alphaC6}). At
-short-ranges this model switches, via a Fermi-like function with a range of
-$\beta$, to the local atomic environment as accounted for by solving a
-Dyson-like self-consistent screening equation.\cite{Ambrosetti2014} $\beta$
-represents a measure for the range of dynamic correlation captured by the
-underlying electronic structure method, so depends on the density functional or
-DFTB parameterization. The recommended $\beta$-values for the mio and 3ob parameter sets are
-listed in the supplementary material.
+of coupled polarizable dipoles\cite{Tkatchenko2012} with rescaled \textit{in
+  vacuo} reference polarizabilities (as in
+Eq.~\eqref{eq:MBDTS_effective_alphaC6}). At short-ranges this model switches,
+via a Fermi-like function with a range of $\beta$, to the local atomic
+environment as accounted for by solving a Dyson-like self-consistent screening
+equation.\cite{Ambrosetti2014} $\beta$ represents a measure for the range of
+dynamic correlation captured by the underlying electronic structure method, so
+depends on the density functional or DFTB parameterization. The recommended
+$\beta$-values for the mio and 3ob parameter sets are listed in the
+supplementary material of Ref.~\cite{hourahine-JCP-152-124101}.
 
 \begin{figure}[htbp]
   \centering
@@ -801,7 +815,7 @@ listed in the supplementary material.
     complexes.\cite{Ambrosetti2014_JPCL,Hermann2017,Stoehr2019_CSR}}
 \end{figure}
 %
-Fig.~\ref{fig:dftbvdw_benchmarks} and Ref.~\onlinecite{Stoehr2016} demonstrate
+Fig.~\ref{fig:dftbvdw_benchmarks} and Ref.~\cite{Stoehr2016} demonstrate
 that DFTB and MBD represent a promising framework to accurately study long-range
 correlation forces and emergent behavior at larger length and time
 scales. Recently, the DFTB+MBD approach has allowed the study of organic
@@ -822,7 +836,7 @@ library.
 \label{sec:TD-DFTB}
 
 Electronic excited states are accessible in \dftbp{} through time dependent DFTB
-methods (see Ref.~\onlinecite{Niehaus2009} for a review and detailed
+methods (see Ref.~\cite{Niehaus2009} for a review and detailed
 discussion of this formalism). In a linear response treatment in the
 frequency domain, excitation energies are obtained by solving an eigenvalue
 problem known as Casida or RPA (random phase approximation)
@@ -851,18 +865,18 @@ computation of the excited state properties of systems with general fractional
 occupation of the KS orbitals. This is useful, for example, for the simulations
 of metals and semi-metals at finite temperature. For a detailed discussion on
 spin-polarization and fractional occupation within TD-DFTB, see
-Ref.~\onlinecite{Dominguez2013}. The onsite correction, discussed in
+Ref.~\cite{Dominguez2013}. The onsite correction, discussed in
 Section~\ref{sec:onsite-correction}, is also possible for excited state
 calculations and was shown to lead to marked improvements.\cite{Dominguez2013}
 
 Due to their improved treatment of charge-transfer transitions, range-separated
 functionals are also relevant in the context of excited states. \dftbp{} implements
-the TD-LC-DFTB method as described in Ref.~\onlinecite{Kranz2017}. Compared to
+the TD-LC-DFTB method as described in Ref.~\cite{Kranz2017}. Compared to
 conventional TD-DFTB, the lower symmetry of the response matrix leads to a
 non-hermitian eigenvalue problem, which we solve by the algorithm
 of Stratmann and co-workers.\cite{Stratmann1998} Somewhat
 surprisingly, it turns out that TD-LC-DFTB calculations are in practice not
-significantly slower than TD-DFTB calculations (see Ref.~\onlinecite{Kranz2017}
+significantly slower than TD-DFTB calculations (see Ref.~\cite{Kranz2017}
 for a deeper discussion). Gradients can also be calculated with TD-LC-DFTB,
 making it possible to perform geometry optimizations and MD simulations in
 singlet excited states.
@@ -996,7 +1010,7 @@ pp-DFTB,\cite{Kranz2017} is now implemented in DFTB+. Particle-particle RPA,
 based on the pairing matrix fluctuation formalism, has been shown to be an
 efficient approach for the accurate description of double and charge-transfer
 (CT) excitations involving the highest occupied molecular orbital (HOMO) (see
-Ref.~\onlinecite{Yang2017} for details).  In Ref.~\onlinecite{Kranz2017} we
+Ref.~\cite{Yang2017} for details).  In Ref.~\cite{Kranz2017} we
 compare against TD-LC-DFTB for CT excitation energies of donor-acceptor
 complexes. TD-LC-DFTB has the advantage that transitions do not necessarily have
 to involve the HOMO of the system. Alternatively pp-DFTB does not require
@@ -1085,7 +1099,7 @@ self-consistency is achieved, the total current flowing in the system is
 calculated with the Landauer/Caroli formula for the non-interacting case, or
 with the Meir-Wingreen formula for the interacting case.\cite{haug2008} A
 detailed description of the numerical algorithms and self-consistent coupling is
-presented in Ref.~\onlinecite{pecchia2008}. Here we summarize the main features
+presented in Ref.~\cite{pecchia2008}. Here we summarize the main features
 which might differentiate \dftbp{} from other nano-device simulation packages:
 (i) support for $N \geqslant 1$ electrodes (enabling structures from surfaces
 and semi-infinite wires to multiple terminal geometries), (ii) $O(L)$
@@ -1158,7 +1172,7 @@ assumed to be the inverse Jacobian of the residual function, $q[n] - n$.\cite{AN
 Here $M_I$ are the atomic masses, ${\bf R}_I$ are the nuclear coordinates, $\omega$ the frequency of the harmonic oscillator, $q[n]$ are the net Mulliken charge vectors (from an optimized linearized energy expression), and $n$ is the extended dynamical
 variable that is set to the optimized ground state net Mulliken charge vector in
 the initial time step. Details of the \dftbp{} implementation are given in
-Ref.~\onlinecite{BAradi15}.
+Ref.~\cite{BAradi15}.
 
 We currently approximate the kernel by a scaled
 identity matrix,
@@ -1199,7 +1213,7 @@ requires dense matrices and $k$-points. For the long-range coulombic and
 dispersion interactions in DFTB we also require lattice sums that are
 generalized to these boundary conditions.\cite{Nikiforov2013}
 
-Further examples can be found in Refs.~\onlinecite{Nikiforov2014,
+Further examples can be found in Refs.~\cite{Nikiforov2014,
   XU2019, DUMITRICA2019}, but here we demonstrate the
 \begin{figure}[htbp]
   \begin{center}
@@ -1240,7 +1254,7 @@ made available in the future.
 
 We briefly outline the xTB methods, for a more detailed discussion and
 comparison to other methods we refer to
-Refs.~\onlinecite{grimme2017,bannwarth2019}.  The xTB core hamiltonian is
+Refs.~\cite{grimme2017,bannwarth2019}.  The xTB core hamiltonian is
 constructed in a partially polarized STO-\textit nG basis set with diagonal
 terms made flexible by adding a dependence on the local chemical environment
 according to a coordination number (CN), similar to that used in
@@ -1273,54 +1287,6 @@ complexes\cite{bursch2019} have shown xTB methods to be robust for all its
 parameterized elements.  Errors in this methods are very systematic, which can
 be used to devise correction schemes for off-target properties like reaction
 enthalpies.\cite{kromann2018}
-
-\subsection{DFTB parameterization}
-
-\subsubsection{Parameterization workflow}
-
-\paragraph{Electronic parameters}
-
-The electronic parameterization for DFTB involves two principal steps. First,
-the compressed atomic densities and the atomic basis functions have to be
-determined (a one-center problem), followed by the calculation of the
-hamiltonian and overlap elements at various distances (a two-center
-problem). The compressed densities and wave-functions come from solving a
-Kohn-Sham-problem for a single atom with an additional confinement potential
-(usually a power function), as shown in Eq.~\eqref{eqn:DFTBatom}.  One may use
-different compression radii (and make separate calculations) to obtain the
-compressed density and the compressed atomic wave-functions for a given
-atom. The atomic calculations are currently carried out with a code implementing
-the Hartree-Fock theory based atomic problem \cite{roothan-rmp-1960a,
-  roothan-rmp-1960b} extended with the possibility of including DFT
-exchange-correlation potentials via the libxc library\cite{libxc} and scalar
-relativistic effects via the zero-order relativistic approximation
-(ZORA).\cite{vanLenthe1993} The resulting densities and atomic wave-functions
-are stored on a grid. The two-center integration tool reads those grid-based
-quantities and calculates the hamiltonian and overlap two-center integrals for
-various distances using the Becke-method.\cite{becke-jcp-1988}
-
-
-\paragraph{Repulsive parameters} Once the electronic parameters for
-  certain species have been determined, the first three terms of
-  Eq.~\eqref{eq:etot} can be calculated for any systems composed of those
-  species. The missing fourth term, the repulsive energy, is composed of
-  pairwise contributions, $V^{\text{rep}}_{AB}$, between all possible atomic
-  pairs of $A$ and $B$ in the system (see Eq.~\eqref{eq:erep}). During the
-  parameterization process, one aims to determine repulsive potentials between
-  the atomic species as a function of the distance between the atoms $R_{AB}$,
-  so that $V^{\text{rep}}_{AB} = f_{\text{sp}(A),\text{sp(B)}}(R_{AB})$, where
-  $\text{sp}(X)$ refers to the species of atom $X$. In contrast to the
-  electronic parameters, which are determined by species-specific parameters
-  only, the repulsive functions must be defined for each combination of species
-  pairs separately. They are usually determined by minimizing the difference
-  between the reference (usually {\it ab initio}) total energies and the DFTB
-  total energies for a given set of atomic geometries. If one uses only one (or
-  a few simple) reference systems, the optimal repulsive function can be
-  determined manually, while for more complex scenarios, usually semi-automatic
-  approaches\cite{Gaus2009, Hellstrom2013, Vuong2018, skpar-repo, adpt-repo} are
-  used.
-
-
 
 \subsubsection{Outlook}
 
@@ -1438,7 +1404,7 @@ separating the occupied from the unoccupied states.\cite{ANiklasson02} Obtaining
 the congruence matrix, $Z$, introduces a potential $O(N^3)$
 bottleneck. To avoid this, the sparsity of $S$ can be exploited and the $Z$
 matrix can be obtained recursively with linear scaling complexity applying the
-``ZSP method'' developed in Refs.~\onlinecite{CNegre16,ANiklasson04B}.
+``ZSP method'' developed in Refs.~\cite{CNegre16,ANiklasson04B}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=8cm]{./figures/dftb-ordern1.pdf}
@@ -1648,22 +1614,11 @@ scripts for validation of parameters in terms of band structure, bond length,
 bond angles, and so on, as well as visualization for the hamiltonian, overlap
 matrix elements, and the repulsive pair potentials. The parameterization tools
 allow extension of existing parameters or incremental development of a parameter
-set. Parameters developed using the \dftbp{} module can, after conversion, be used
-outside MS. Several default \dftbp{} parameter sets, generated using
-these parameterization tools, are also included. In 2019, MS introduced a new parameter set that
-includes the \ce{Li}, \ce{C}, \ce{H}, \ce{N}, \ce{O}, \ce{P}, \ce{F} elements
-and is aimed towards \ce{Li}-ion battery modeling.
-
-
-\subsection{Outlook}
-
-In order to enable flexible general communication with various types of external
-components (external drivers, QM/MM, machine learning models, $\ldots$), we are
-in the process of developing a communication library,\cite{saydx-repo} which
-allows for data exchange between mixed language (e.g.\ Fortran and C) components
-via API-bindings as well as between different processes via socket
-communications. After engagement with other stakeholders this will be released
-as a set of BSD-licensed tools and a library.
+set. Parameters developed using the \dftbp{} module can, after conversion, be
+used outside MS. Several default \dftbp{} parameter sets, generated using these
+parameterization tools, are also included. In 2019, MS introduced a new
+parameter set that includes the \ce{Li}, \ce{C}, \ce{H}, \ce{N}, \ce{O}, \ce{P},
+\ce{F} elements and is aimed towards \ce{Li}-ion battery modeling.
 
 
 \section{Software engineering in \dftbp{}}
@@ -1738,13 +1693,6 @@ several other simulation packages. \dftbp{} is a community developed open source
 project under the GNU Lesser General Public License, which can be freely used,
 modified and extended by everybody.
 
-
-\section*{Supplementary Material}
-
-See supplementary material for the damping parameters for the D4, the TS and the
-MBD dispersion models.
-
-
 \begin{acknowledgments}
   The authors, especially B.~Hourahine and B.~Aradi, thank Gotthard Seifert for
   his suggestions and insights into Density Functional Tight Binding throughout
@@ -1777,7 +1725,7 @@ MBD dispersion models.
   NSF grant 1547580.
 \end{acknowledgments}
 
-
+\raggedright
 % Workaround to get rid of meaningless warning BibTex jnrlst
 \bibliographystyle{apsrev4-1}
 \bibliography{titles,references}
