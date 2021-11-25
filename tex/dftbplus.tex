@@ -210,23 +210,22 @@
 
 \section{Introduction}
 
-Density Functional Theory (DFT)\cite{Hohenberg1964,Kohn1965} dominates the
+Density Functional Theory (DFT)~\cite{Hohenberg1964,Kohn1965} dominates the
 landscape of electronic structure methods, being the usual go-to technique to
 model large, chemically complex systems at good accuracy. For larger systems and
 time scales, force-field models instead dominate materials and chemical
 modeling. Between these is the domain of semi-empirical methods, derived from
 approximations to Hartree-Fock or DFT based methods. Within this space, density
-functional based tight binding (DFTB),\cite{Seifert1996,Porezag1995,Elstner1998}
-effectively offers a reduced complexity DFT method, being derived from a
-simplification of Kohn-Sham DFT to a tight binding
-form.\cite{ElstnerSeifertBBA2014}
+functional based tight binding
+(DFTB)~\cite{Seifert1996,Porezag1995,Elstner1998}, effectively offers a reduced
+complexity DFT method, being derived from a simplification of Kohn-Sham DFT to a
+tight binding form~\cite{ElstnerSeifertBBA2014}.
 
-This article describes the \dftbp{} code,\cite{dftbplus-repo} an
-open source implementation which aims to collect the developments of this
-family of methods and make them generally available to the chemical, materials
-and condensed matter communities. This article describes extensions to this
-code since its original release in 2007,\cite{aradi-jpca-2007} there being a
-lack of a more recent overview of its features and underlying theory.
+This article describes the \dftbp{} code~\cite{dftbplus-repo}, an open source
+implementation which aims to collect the developments of this family of methods
+and make them generally available to the chemical, materials and condensed
+matter communities. This article describes extensions to this code since its
+original release in 2007 \cite{aradi-jpca-2007}.
 
 \section{\dftbp{} features}
 
@@ -239,7 +238,7 @@ Hartree as the energy unit.
 
 \subsubsection{Expansion of the total energy}
 
-The DFTB models are derived from Kohn-Sham (KS) DFT\cite{Kohn1965}
+The DFTB models are derived from Kohn-Sham (KS) DFT~\cite{Kohn1965}
 by expansion of the total energy functional.  Starting from a properly
 chosen reference density $\rho_0$ (e.g.\ superposition of neutral atomic
 densities), the ground state density is then represented by this reference, as 
@@ -273,10 +272,10 @@ with
 with XC being the exchange correlation energy and potential.
 %
 Several DFTB models have been implemented, starting from the first order
-non-self-consistent DFTB1\cite{Seifert1996,Porezag1995} (originally called
-DFTB or non-SCC DFTB), the second order DFTB2 (originally called SCC-DFTB)\cite{Elstner1998}
+non-self-consistent DFTB1~\cite{Seifert1996,Porezag1995} (originally called
+DFTB or non-SCC DFTB), the second order DFTB2 (originally called SCC-DFTB)~\cite{Elstner1998}
 and the more recent extension to third order,
-DFTB3.\cite{Elstner2007,Yang2007,Gaus2011,Gaus2012}
+DFTB3~\cite{Elstner2007,Yang2007,Gaus2011,Gaus2012}.
 
 \subsubsection{DFTB1}
 
@@ -319,10 +318,10 @@ The hamiltonian can be represented in an LCAO basis as
   \label{eqn:matelements}
 \end{eqnarray}
 where the neglect of the three center terms and pseudo-potential
-contributions\cite{ElstnerSeifertBBA2014} lead to a representation which can be
+contributions~\cite{ElstnerSeifertBBA2014} lead to a representation which can be
 easily computed by evaluating the Kohn-Sham equations for dimers. These matrix
 elements are computed once as a function of inter-atomic distance for all element
-pairs. The Slater-Koster\cite{PhysRev.94.1498} combination rules are applied for
+pairs. The Slater-Koster~\cite{PhysRev.94.1498} combination rules are applied for
 the actual orientation of these `dimers' within a molecule or solid.
 
 \paragraph{Total energy}
@@ -338,8 +337,8 @@ energy terms,
   \label{eq:erep}
 \end{eqnarray}
 (see Ref.~\cite{Seifert2012}) which are either determined by comparison
-with DFT calculations\cite{Porezag1995} or fitted to empirical
-data.\cite{Gaus2009} Forces are calculated with the Hellmann-Feynman theorem and
+with DFT calculations~\cite{Porezag1995} or fitted to empirical
+data~\cite{Gaus2009}. Forces are calculated with the Hellmann-Feynman theorem and
 derivatives of the repulsive energy.
 
 
@@ -355,7 +354,7 @@ taken to be exponentially decaying spherically symmetric charge densities
 \end{eqnarray}
 By neglecting the XC-contributions for the moment, the second order integral
 $E^2$ leads to an analytical function, $\gamma_{AB}$, with
-energy:\cite{Elstner1998}
+energy~\cite{Elstner1998}:
 %
 \begin{eqnarray}
   E^2(\tau_A,\tau_B,R_{AB}) = \frac{1}{2}\sum_{AB(\ne A)}
@@ -390,7 +389,7 @@ energy is then given by
 The third order terms become important when local densities deviate
 significantly from the reference, i.e.\ $\Delta q_A$ is large. Apart from
 including the third order terms, DFTB3 also modifies $\gamma_{AB}$ for the
-interactions between hydrogen and first row elements,\cite{Elstner2007} where
+interactions between hydrogen and first row elements~\cite{Elstner2007}, where
 the deviation from the relation between the charge width and the chemical
 hardness, as formulated above, is most pronounced.
 
@@ -408,7 +407,7 @@ $\phi_\nu$, and $\gamma^h$ is the modified DFTB2 interaction.
 \subsubsection{Spin}
 
 Analogous to DFTB2, expanding the energy with respect to spin
-fluctuations\cite{Frauenheim2000, Koehler2005, Koehler2001} leads to the
+fluctuations~\cite{Frauenheim2000, Koehler2005, Koehler2001} leads to the
 spin-polarized expressions for DFTB. By introducing the magnetization density
 $m(\mathbf{r})=\rho^{\uparrow}(\mathbf{r})-\rho^{\downarrow}(\mathbf{r})$ as
 difference of the densities of spin-up and spin-down electrons and its
@@ -441,7 +440,7 @@ Eq.~\eqref{spin3} gives only a small energy contribution. If there is a net
 imbalance of up- and down-spin electrons in the system, the occupation of
 electronic states alone carries most of the effect of the unpaired electron(s)
 without including Eq.~\eqref{spin3}.  The use of Mulliken charges leads to an
-additional hamiltonian contribution\cite{Koehler2005} to the (now) shell
+additional hamiltonian contribution~\cite{Koehler2005} to the (now) shell
 resolved form of Eq.~\eqref{dftb3Ham},
 \begin{equation}
   H^{spin\pm}_{\mu\nu} = \pm \frac{S_{\mu\nu}}{2} \left( \sum\limits_{l'' \in A}
@@ -451,7 +450,7 @@ resolved form of Eq.~\eqref{dftb3Ham},
 where the spin up (down) hamiltonian has this term added (subtracted).
 
 Expanding further to local (not global) up and down spin populations via Pauli
-spinors gives the non-collinear spin model.\cite{doi:10.1021/jp068802p}
+spinors gives the non-collinear spin model~\cite{doi:10.1021/jp068802p}.
 Eq.~\eqref{spin3} becomes
 \begin{equation}
 E^2_{spin} = \frac{1}{2}\sum_{A}\sum_{l \in A} \sum_{l' \in A} W_{All'} \Delta \vec{p}_{Al} \cdot \Delta \vec{p}_{Al'},\label{spin3nc}
@@ -464,7 +463,7 @@ contributions take the form
 where $\sigma_i$ is the Pauli matrix for spin component $i (= x,y,z)$ and
 $H^{\sigma_i}$ is constructed from the $i^\mathrm{th}$ spin component of $\Delta
 \vec{p}$. This spin-block two component hamiltonian then also enables spin-orbit
-coupling\cite{doi:10.1021/jp068802p,Hourahine11} to be included in \dftbp{}. The
+coupling~\cite{doi:10.1021/jp068802p,Hourahine11} to be included in \dftbp{}. The
 spin-block hamiltonian addition is
 \begin{equation}
 H_{\mu\nu}^{L \cdot S} = \frac{S_{\mu\nu}}{2} \otimes\left(  \xi_{Al} \mqty( L_z & L^-\\ L^+ & - L_z )_l + \xi_{Bl'} \mqty( L_z & L^-\\ L^+ & - L_z )_{l'} \right)\qquad{\mu \in l\in A, \nu \in l' \in B}
@@ -495,11 +494,11 @@ of bonds with different bond order. E.g., C-O single, double and triple bonds
 have to be covered by a single repulsive potential, which shows only a limited
 transferability over the three bonding situations. This is the reason why both,
 good atomization energies and vibrational frequencies can not be covered with a
-single fit.\cite{Gaus2012} Hence in that work two parameterizations were
+single fit~\cite{Gaus2012}. Hence in that work two parameterizations were
 proposed, one for obtaining accurate energies and one for the vibrational
 frequencies.  Similarly, description of different crystal phases with the same
 chemical composition but with very different coordination numbers can be
-challenging. Recent examples show,\cite{Hellstrom2013,Fihey2015} however, that
+challenging. Recent examples show~\cite{Hellstrom2013,Fihey2015}. however, that
 it is possible to reach a reasonable accuracy if special care is taken during
 the parameterization process.
 
@@ -509,11 +508,11 @@ overall DFTB performance: First, for a good description of hydrogen in different
 bonding situations, relatively diffuse wave functions have to be chosen.  For
 this atomic wave-function however, the H$_2$ atomization energy is in error,
 which is dealt with by an {\it ad hoc} solution, again providing a special
-repulsive parameter set.\cite{Gaus2012} Further, nitrogen hybridization and
+repulsive parameter set~\cite{Gaus2012}. Further, nitrogen hybridization and
 proton affinities require at least the inclusion of $d$-orbitals in the basis
 set: this again can be compensated by a special parameter set, which has to be
-applied under certain conditions.\cite{Gaus2012} A similar problem occurs for
-highly coordinated phosphorus containing species.\cite{Gaus2015} The minimal
+applied under certain conditions~\cite{Gaus2012}. A similar problem occurs for
+highly coordinated phosphorus containing species~\cite{Gaus2015}. The minimal
 basis can become also problematic when describing the high lying (conduction
 band) states in solids. For example, silicon needs $d$-orbitals in order to
 describe the conduction band minimum properly. The valence band, on the other
@@ -523,12 +522,12 @@ hand, can be reasonably described with an $sp$-only basis.
 repulsion forces are underestimated, which leads to DFTB non-bonding
 interactions being on average too short by 10-15$\%$. This has been investigated
 in detail for liquid water, where a different repulsive potential has been
-suggested.\cite{Goyal2014} A related problem concerns molecular
+suggested~\cite{Goyal2014}. A related problem concerns molecular
 polarizabilities, which are underestimated using a minimal basis set. Approaches
 to correct for this short-coming have been summarized recently in
 Ref.~\cite{Christensen2016}. The too-confined range of basis functions
 also impairs the calculation of electron-transfer couplings. Here, unconfined
-basis sets have to be used.\cite{Kubas2014} Similarly, it can be challenging to
+basis sets have to be used~\cite{Kubas2014}. Similarly, it can be challenging to
 find a good compromise for the basis confinement when describing 2D-layered
 materials. As the inter-layer distances are significantly longer than the
 intra-layer ones, the binding between the layers often becomes weaker compared
@@ -543,19 +542,19 @@ below in more detail.
 \subsection{Density matrix functionals}
 
 The typical behavior of the SCC-DFTB ground state resembles LDA or
-GGA,\cite{hourahine07} i.e., a mean-field (MF) electronic structure method with
+GGA~\cite{hourahine07}, i.e., a mean-field (MF) electronic structure method with
 associated self-interaction errors and, for some systems, qualitatively
 incorrect ground states. This is in contrast to non-SCC DFTB, which gives the
 correct linearity of total energy and step-wise chemical
-potentials\cite{PhysRevLett.49.1691} for fractionally charged systems. But
+potentials~\cite{PhysRevLett.49.1691} for fractionally charged systems. But
 non-SCC can also produce MF-DFT limits, such as in the case of dimer
-dissociation\cite{Rapacioli2011,Irle2012} due to self-interaction errors in the underlying
-atomic DFT potentials.
+dissociation~\cite{Rapacioli2011,Irle2012} due to self-interaction errors in the
+underlying atomic DFT potentials.
 
 \dftbp{} now also supports long-range corrected hybrid functionals for exchange
 and correlation. With respect to conventional local/semi-local functionals these
 are known to provide a better description of wave function localization and
-significantly reduce self-interaction.\cite{Baer2010} In the longer term,
+significantly reduce self-interaction~\cite{Baer2010}. In the longer term,
 \dftbp{} will continue to develop post-DFT based methods with the aim of making
 large ($\gtrsim 1000$ atom) correlated systems tractable via methods with
 correlated self energies or wave-functions.
@@ -567,7 +566,7 @@ DFTB2 neglects on-site hamiltonian integrals of the type $(\mu\nu|\mu\nu)$,
 where $\phi_\mu$ and $\phi_\nu$ are two {\em different} atomic orbitals of the
 same atom (both Eq.~\eqref{eqn:matelements} and the use of Mulliken charges give
 on-site elements only for $\delta_{\mu\nu} = 1$). A generalized \textit{dual}
-population\cite{PhysRevB.73.045110} can be introduced as
+population~\cite{PhysRevB.73.045110} can be introduced as
 \begin{equation}
   Q_{\mu\nu}^{A,l} = \frac{1}{2} \sum_\kappa \left(
     \rho_{\mu\kappa}S_{\kappa\nu} + S_{\mu\kappa} \rho_{\kappa\nu} \right),
@@ -583,7 +582,7 @@ atomic parts of the density matrix from the reference can be included, not only
 the diagonal (charge) elements.  These must then be treated self-consistently
 during the calculation. This generalization leads, for example, to an improved
 description of hydrogen bonds in neutral, protonated and hydroxide water
-clusters, as well as other water-containing complexes.\cite{Dominguez2015}
+clusters, as well as other water-containing complexes~\cite{Dominguez2015}.
 
 The onsite-corrected DFTB requires additional atomic parameters, these are not
 tunable but computed numerically using DFT (see Ref.~\cite{Dominguez2013}
@@ -597,32 +596,32 @@ affected.
 \subsubsection{DFTB+U and mean-field correlation corrections}
 
 For correlated materials such as \ce{NiO}, a popular correction choice in DFT is
-the LDA+U family of methods,\cite{Anisimov_1997} which add a contribution to the
+the LDA+U family of methods~\cite{Anisimov_1997}, which add a contribution to the
 energy of specified local orbitals obtained from the Hubbard model. The
-rotationally invariant\cite{PhysRevB.57.1505} form of LDA+U can be written in
+rotationally invariant~\cite{PhysRevB.57.1505} form of LDA+U can be written in
 terms of several choices of local projections of the density
-matrix.\cite{PhysRevB.73.045110} Likewise, the double-counting between the
+matrix~\cite{PhysRevB.73.045110}. Likewise, the double-counting between the
 Hubbard-model and the density functional mean-field functional take several
-limiting cases.\cite{PhysRevB.67.153106} In \dftbp{} the fully-localized limit
+limiting cases~\cite{PhysRevB.67.153106}. In \dftbp{} the fully-localized limit
 of this functional was implemented early in the code's
-history,\cite{hourahine07} using the populations of
+history~\cite{hourahine07}, using the populations of
 Eq.~\eqref{eqn:dualpop}. Originally applied for rare-earth
-systems,\cite{doi:10.1002/pssc.200778667} DFTB+U gives excellent agreement with
-GGA+U.\cite{doi:10.1063/1.5085190} A closely related correction,
-pseudo-SIC,\cite{PhysRevB.67.125109} where the local part of the
+systems~\cite{doi:10.1002/pssc.200778667}, DFTB+U gives excellent agreement with
+GGA+U~\cite{doi:10.1063/1.5085190}. A closely related correction,
+pseudo-SIC~\cite{PhysRevB.67.125109}, where the local part of the
 self-interaction is removed, modifying only the occupied orbitals, is also
 available.  These approximations lower the energies of occupied atomic orbitals
 within specified atomic shells, with the aim of removing self-interaction or
 more accurately representing self-energy. But as with its use in DFT, this
 approximation suffers from three main drawbacks. Firstly the form of the
 correction depends on the choice of double counting
-removal.\cite{PhysRevB.79.035103} The correlation is also mean-field in nature,
+removal~\cite{PhysRevB.79.035103}. The correlation is also mean-field in nature,
 hence all equally filled orbitals within a shell receive the same correction and
 therefore cases not well described by a single determinant are not
 systematically improved. Finally, the choice of the $U$ (and $J$) values is not
 necessarily obvious, with a number of different empirical, linear response and
 self-consistent choices possible. Specific to
-DFTB\cite{doi:10.1021/acs.jpcc.6b10557} the $U$ values may also require
+DFTB~\cite{doi:10.1021/acs.jpcc.6b10557} the $U$ values may also require
 co-optimization with the repulsive parameters, in particular for systems where
 the electronic structure is geometrically sensitive.
 
@@ -639,19 +638,19 @@ into short and long range components based on a single parameter $\omega$:
 \end{equation}
 The short range contribution is treated in a local or semi-local density
 functional approximation, while the long range term gives rise to a Hartree-Fock
-like exchange term in the hamiltonian.\cite{Baer2010} The necessary adaptions
+like exchange term in the hamiltonian~\cite{Baer2010}. The necessary adaptions
 for the DFTB method (termed LC-DFTB) were introduced in
 Refs.~\cite{Niehaus2012,Lutsker2015}. Note that quite generally for \dftbp{},
 the exchange-correlation functional is effectively chosen by loading the
 appropriate Slater-Koster files created for the desired level of theory. This
 also holds for LC-DFTB, where different values for the range-separation
 parameter, $\omega$, lead to different Slater-Koster files. The database at
-\url{www.dftb.org} currently hosts the ob2 set\cite{Vuong2019} for the elements
+\url{www.dftb.org} currently hosts the ob2 parameter set~\cite{Vuong2019} for the elements
 \ce{O},\ce{N},\ce{C},\ce{H} with $\omega$ = 0.3 $a_0^{-1}$.
 
 LC-DFTB calculations can also be performed for spin-polarized systems, enabling
 evaluation of triplet excited states and their corresponding relaxed geometries.
-It also paves the way for a rational determination and tuning\cite{Baer2010} of
+It also paves the way for a rational determination and tuning~\cite{Baer2010} of
 the range-separation parameter $\omega$, which amounts to total energy
 evaluations for neutral and singly ionized species. Note that the required
 atomic spin constants are functional specific. The spin parameters for the ob2
@@ -662,12 +661,12 @@ Slater-Koster set are available in the manual.
 
 Instead of single determinants, the spin-restricted ensemble-referenced
 Kohn-Sham (REKS) method and its state-interaction state-averaged variant
-(SI-SA-REKS, or SSR)\cite{Kazaryan2008, Filatov2015, Filatov2016, Filatov1999,
+(SI-SA-REKS, or SSR)~\cite{Kazaryan2008, Filatov2015, Filatov2016, Filatov1999,
   Moreira2007, Filatov2017} based on ensemble density functional theory are now
 available in \dftbp{}. SSR can describe electronic states with multi-reference
 character and can accurately calculate excitation energies between them
 (see~\ref{para:ssrxc}). The SSR method is formulated in the context of the
-LC-DFTB method (LC-DFTB/SSR)\cite{Lee19} since a long-range corrected functional
+LC-DFTB method (LC-DFTB/SSR)~\cite{Lee19} since a long-range corrected functional
 is crucial to correctly describe electronic structure particularly for the
 excited states (see Ref.~\cite{Lee19} for details of the formalism).
 Spin-polarization parameters are also required to describe open-shell
@@ -691,7 +690,7 @@ forces; most prominently van der Waals (vdW) dispersion interactions and
 cooperative hydrogen-bonding effects. An accurate account of vdW forces is
 essential in order to reliably describe a wide range of systems in biology,
 chemistry, and materials science.  DFTB has already been successfully combined
-with a range of different correction schemes\cite{elstner2001, brandenburg2014,
+with a range of different correction schemes~\cite{elstner2001, brandenburg2014,
   mortazavi2018, Rapacioli2009, Petraglia2015, Stoehr2016} to account for these
 weaker interactions, but here we outline some newer methods available in
 \dftbp{}.
@@ -699,7 +698,7 @@ weaker interactions, but here we outline some newer methods available in
 
 \paragraph{H5 correction for hydrogen bonds}
 
-The H5 correction\cite{rezac2017} addresses the issue of hydrogen bonding at
+The H5 correction~\cite{rezac2017} addresses the issue of hydrogen bonding at
 the level of the electronic structure.  For DFTB2 and DFTB3, interaction
 energies of H-bonds are severely underestimated for two main reasons: most
 importantly the monopole approximation does not allow on-atom polarization; even
@@ -711,13 +710,13 @@ electronegative elements (N, O and S). The H5 correction is applied within the
 SCC cycle, thus includes many-body effects (the source of the important
 cooperativity in H-bond networks).
 The H5 correction was developed for DFTB3 with the 3OB parameters and a specific
-version of the DFT-D3\cite{grimme2010,grimme2011} dispersion correction. Note
+version of the DFT-D3~\cite{grimme2010,grimme2011} dispersion correction. Note
 that this D3 correction also includes an additional term augmenting
 hydrogen-hydrogen repulsion at short range (necessary for accurate description
-of aliphatic hydrocarbons\cite{rezac_2012,vorlova_2015}).
+of aliphatic hydrocarbons~\cite{rezac_2012,vorlova_2015}).
 
 \paragraph{DFT-D4 Dispersion Correction}
-The D4 model\cite{caldeweyher2017,caldeweyher2019} is now available in \dftbp{} as
+The D4 model~\cite{caldeweyher2017,caldeweyher2019} is now available in \dftbp{} as
 a dispersion correction. Like D3, pairwise $C_6^{AB}$ dispersion coefficients
 are obtained from a Casimir--Polder integration of effective atomic
 polarizabilities~$\alpha_{A/B}^\text{eff}(iu)$
@@ -731,12 +730,12 @@ polarizabilities~$\alpha_{A/B}^\text{eff}(iu)$
 The influence of the chemical environment is captured by using a range of
 reference surroundings, weighted by a coordination number.  D4 improves on its
 predecessor by also including a charge scaling based on atomic partial charges
-determined either as Mulliken\cite{caldeweyher2017} or classical
-electronegativity equilibration.\cite{caldeweyher2019} Especially for
+determined either as Mulliken~\cite{caldeweyher2017} or classical
+electronegativity equilibration~\cite{caldeweyher2019}. Especially for
 metal-containing systems, the introduced charge dependence improves
-thermochemical properties.\cite{bursch2019} Large improvements can also be
+thermochemical properties~\cite{bursch2019}. Large improvements can also be
 observed for solid-state polarizabilities of inorganic
-salts.\cite{caldeweyher2020} For a full discussion on the methodology behind D4
+salts~\cite{caldeweyher2020}. For a full discussion on the methodology behind D4
 we refer the reader to Ref.~\cite{caldeweyher2019} and the implementation
 details presented in Ref.~\cite{caldeweyher2020}. The damping parameters
 for several Slater--Koster sets can be found in the supplementary material of
@@ -749,14 +748,14 @@ Ref.~\cite{hourahine-JCP-152-124101}.
 \end{figure}
 
 To investigate the performance of the DFTB-D4 parameterizations we evaluate the
-association energies for the S30L benchmark set.\cite{sure2015,brandenburg2018}
-DFTB-D4 is compared to DFTB3(3ob)-D3(BJ),\cite{brandenburg2014}
-GFN1-xTB\cite{grimme2017} and GFN2-xTB,\cite{bannwarth2019} additionally we
-include the dispersion corrected SCAN\cite{sun2015} functional for comparison to
-DFT.  The deviation from the reference values is shown in
-Fig.~\ref{fig:d4-s30l}. For the mio parameterization, complexes 4, 15 and 16 were
-excluded due to missing Slater--Koster parameters.  The direct comparison of
-DFTB3(3ob)-D3(BJ) with a MAD of 7.1\;kcal/mol to the respective D4 corrected
+association energies for the S30L benchmark set~\cite{sure2015,brandenburg2018}.
+DFTB-D4 is compared to DFTB3(3ob)-D3(BJ)~\cite{brandenburg2014},
+GFN1-xTB~\cite{grimme2017} and GFN2-xTB~\cite{bannwarth2019}, additionally we
+include the dispersion corrected SCAN~\cite{sun2015} functional for comparison
+to DFT.  The deviation from the reference values is shown in
+Fig.~\ref{fig:d4-s30l}. For the mio parameterization, complexes 4, 15 and 16
+were excluded due to missing Slater--Koster parameters.  The direct comparison
+of DFTB3(3ob)-D3(BJ) with a MAD of 7.1\;kcal/mol to the respective D4 corrected
 method with a MAD of 6.5\;kcal/mol shows a significant improvement over its
 predecessor. The DFTB2(mio)-D4 gives an improved description with a MAD of
 4.5\;kcal/mol, which is better than GFN1-xTB with a MAD of 5.5\;kcal/mol. The
@@ -766,7 +765,7 @@ and the density dependent D4 dispersion, giving a MAD of 3.6\;kcal/mol.
 
 \paragraph{Tkatchenko-Scheffler (TS) dispersion}
 
-The Tkatchenko-Scheffler correction (TS)\cite{Tkatchenko2009} includes vdW
+The Tkatchenko-Scheffler correction (TS)~\cite{Tkatchenko2009} includes vdW
 interactions as London-type atom-pairwise $C_6/R^6$-potentials with damping at
 short inter-atomic separations, where the electronic structure method already
 captures electron correlation. Suggested damping parameters for the mio and 3ob
@@ -774,7 +773,7 @@ parameter sets are listed in the supplementary material of
 Ref.~\cite{hourahine-JCP-152-124101}. In the TS approach, all vdW parameters
 including the static atomic dipole polarizability, $\alpha$, and
 $C_6$-dispersion coefficients depend on the local electronic structure and the
-chemical environment.\cite{Tkatchenko2009} High-accuracy \textit{in vacuo}
+chemical environment~\cite{Tkatchenko2009}. High-accuracy \textit{in vacuo}
 reference values (below labeled by vac) are rescaled via
 \begin{equation}
   x^2 = \left(\frac{\alpha_A^{\rm eff}}{\alpha_A^{\rm vac}}\right)^2 =
@@ -782,22 +781,22 @@ reference values (below labeled by vac) are rescaled via
   \label{eq:MBDTS_effective_alphaC6}
 \end{equation}
 In the case of DFT, $x$ is approximated based on the Hirshfeld atomic
-volumes.\cite{Hirshfeld1977} When combined with DFTB, a fast yet accurate
-alternative has been proposed\cite{Stoehr2016} that does not require
+volumes~\cite{Hirshfeld1977}. When combined with DFTB, a fast yet accurate
+alternative has been proposed~\cite{Stoehr2016} that does not require
 evaluating a real-space representation of the electron density. Instead the
 ratio between atom-in-molecule and \textit{in vacuo} net atomic electron
 populations (i.e., $\tr\left(\rho\right)_A - Z_A$) are used to define $x$.
 
 \paragraph{Many-body dispersion (MBD)}
-Going beyond pairwise interactions, MBD\cite{Tkatchenko2012,Ambrosetti2014}
+Going beyond pairwise interactions, MBD~\cite{Tkatchenko2012,Ambrosetti2014}
 accounts for many-atom interactions in a dipolar approximation up to infinite
 order in perturbation theory. This is achieved by describing the system as a set
-of coupled polarizable dipoles\cite{Tkatchenko2012} with rescaled \textit{in
+of coupled polarizable dipoles~\cite{Tkatchenko2012} with rescaled \textit{in
   vacuo} reference polarizabilities (as in
 Eq.~\eqref{eq:MBDTS_effective_alphaC6}). At short-ranges this model switches,
 via a Fermi-like function with a range of $\beta$, to the local atomic
 environment as accounted for by solving a Dyson-like self-consistent screening
-equation.\cite{Ambrosetti2014} $\beta$ represents a measure for the range of
+equation~\cite{Ambrosetti2014}. $\beta$ represents a measure for the range of
 dynamic correlation captured by the underlying electronic structure method, so
 depends on the density functional or DFTB parameterization. The recommended
 $\beta$-values for the mio and 3ob parameter sets are listed in the
@@ -810,23 +809,23 @@ supplementary material of Ref.~\cite{hourahine-JCP-152-124101}.
     absolute relative errors (MARE) in inter-molecular interaction energies of
     bare DFTB and with different van der Waals models in comparison to
     high-level reference data. S66 and S66x8: small organic dimers and their
-    dissociation curves,\cite{Rezac2011_S66,Rezac2011_S66x8} SMC13: set of 13
+    dissociation curves~\cite{Rezac2011_S66,Rezac2011_S66x8}, SMC13: set of 13
     supra-molecular
-    complexes.\cite{Ambrosetti2014_JPCL,Hermann2017,Stoehr2019_CSR}}
+    complexes~\cite{Ambrosetti2014_JPCL,Hermann2017,Stoehr2019_CSR}.}
 \end{figure}
 %
 Fig.~\ref{fig:dftbvdw_benchmarks} and Ref.~\cite{Stoehr2016} demonstrate
 that DFTB and MBD represent a promising framework to accurately study long-range
 correlation forces and emergent behavior at larger length and time
 scales. Recently, the DFTB+MBD approach has allowed the study of organic
-molecular crystals\cite{mortazavi2018} and solvated biomolecules, revealing the
+molecular crystals~\cite{mortazavi2018} and solvated biomolecules, revealing the
 complex implications of many-body vdW forces for proteins and their interaction
-with aqueous environments.\cite{Stoehr2019} Further improvements of TS and MBD,
-including a better description of charge transfer effects\cite{Gould2016} and
-variational self-consistency\cite{Ferri2015} may also be incorporated into DFTB
+with aqueous environments~\cite{Stoehr2019}. Further improvements of TS and MBD,
+including a better description of charge transfer effects~\cite{Gould2016} and
+variational self-consistency~\cite{Ferri2015} may also be incorporated into DFTB
 in the future.  Both methods are formulated independently of the underlying
 electronic-structure methods. As a result \dftbp{} outsources the evaluation of
-the MBD and TS interactions to Libmbd,\cite{libmbd} an external open-source
+the MBD and TS interactions to Libmbd~\cite{libmbd}, an external open-source
 library.
 
 
@@ -842,7 +841,7 @@ frequency domain, excitation energies are obtained by solving an eigenvalue
 problem known as Casida or RPA (random phase approximation)
 equations. Compared to first-principles time dependent DFT, the computational
 scaling can be reduced in DFTB from $N^6$ to $N^3$. This is due to the Mulliken
-approximation for two-electron integrals,\cite{Niehaus2001a} which uses
+approximation for two-electron integrals~\cite{Niehaus2001a}, which uses
 transition charges $q^{pq\sigma}_A$,
 \begin{equation}
   \label{qia}
@@ -867,14 +866,14 @@ of metals and semi-metals at finite temperature. For a detailed discussion on
 spin-polarization and fractional occupation within TD-DFTB, see
 Ref.~\cite{Dominguez2013}. The onsite correction, discussed in
 Section~\ref{sec:onsite-correction}, is also possible for excited state
-calculations and was shown to lead to marked improvements.\cite{Dominguez2013}
+calculations and was shown to lead to marked improvements~\cite{Dominguez2013}.
 
 Due to their improved treatment of charge-transfer transitions, range-separated
 functionals are also relevant in the context of excited states. \dftbp{} implements
 the TD-LC-DFTB method as described in Ref.~\cite{Kranz2017}. Compared to
 conventional TD-DFTB, the lower symmetry of the response matrix leads to a
 non-hermitian eigenvalue problem, which we solve by the algorithm
-of Stratmann and co-workers.\cite{Stratmann1998} Somewhat
+of Stratmann and co-workers~\cite{Stratmann1998}. Somewhat
 surprisingly, it turns out that TD-LC-DFTB calculations are in practice not
 significantly slower than TD-DFTB calculations (see Ref.~\cite{Kranz2017}
 for a deeper discussion). Gradients can also be calculated with TD-LC-DFTB,
@@ -886,9 +885,9 @@ clearly outside of the scope of TD(-LC)-DFTB since their description generally
 requires very diffuse basis sets. Apart from this class, the photochemically
 more relevant set of low energy valence excitations are predicted with similar
 accuracy to first principles TD-DFT, as several benchmarks
-indicate.\cite{trani2011time,Dominguez2013,fihey2019performances} As mentioned
+indicate~\cite{trani2011time,Dominguez2013,fihey2019performances}. As mentioned
 above, charge-transfer excitations can now be also treated using
-TD-LC-DFTB.\cite{Kranz2017}
+TD-LC-DFTB~\cite{Kranz2017}.
 
 \subsubsection{SSR and excitations}
 \label{para:ssrxc}
@@ -896,7 +895,7 @@ TD-LC-DFTB.\cite{Kranz2017}
 Currently, the SSR method implemented in \dftbp{} is formulated for active
 spaces including two electrons in two fractionally occupied orbitals (i.e.,
 SSR(2,2)) which is suitable for a singlet ground state and the lowest singlet
-excited state as well as a doubly excited state.\cite{Lee19} In addition, since
+excited state as well as a doubly excited state~\cite{Lee19}. In addition, since
 the SSR method is based on an ensemble representation and includes the
 electronic correlation it can give correct state-interactions among nearly
 degenerate electronic states. Thus, SSR approach is useful to investigate
@@ -915,18 +914,18 @@ and powerful, but there exist circumstances where a more direct route to excited
 states is desirable. For example, excited-state properties obtained from linear
 response theory require an additional order of derivatives relative to the
 ground state. As noted in Section \ref{sec:TD-DFTB}, linear-response TD-DFTB
-(like its parent method TD-DFT)\cite{Dreuw2004} should invoke range-separation
+(like its parent method TD-DFT)~\cite{Dreuw2004} should invoke range-separation
 to achieve a qualitatively correct picture of charge-transfer excitations and
-related long-range phenomena.\cite{Kranz2017}
+related long-range phenomena~\cite{Kranz2017}.
 
 As an alternative to the time-dependent linear-response approach, it is possible
 to variationally optimize certain electronically excited states directly. The
 $\Delta$DFTB method, modeled on the $\Delta$-self-consistent-field ($\Delta$SCF)
-approach to excited states in DFT\cite{Ziegler1977,Kowalczyk2011} involves
+approach to excited states in DFT~\cite{Ziegler1977,Kowalczyk2011} involves
 solving the SCC-DFTB equations subject to an orbital occupation constraint that
 forces the adoption of a non-aufbau electronic configuration consistent with the
 target excited state. This method is implemented for the lowest-lying singlet
-excited state of closed-shell molecules in \dftbp{}.\cite{Kowalczyk2016} The
+excited state of closed-shell molecules in \dftbp{}~\cite{Kowalczyk2016}. The
 converged, non-aufbau SCC-DFTB determinant is a spin-contaminated or ``mixed''
 spin state, but the excitation energy can be approximately spin-purified through
 the Ziegler sum rule which extracts the energy of a pure singlet from the
@@ -936,7 +935,7 @@ A significant advantage of the $\Delta$DFTB approach is that excited-state
 gradients and hessians are quite straightforward to compute, both mathematically
 and in terms of computational cost, relative to linear response
 approaches. Benchmarks of $\Delta$DFTB excited-state geometries and Stokes
-shifts\cite{Kowalczyk2016} demonstrate the suitability of the method for
+shifts~\cite{Kowalczyk2016} demonstrate the suitability of the method for
 simulating excited-state energetics and dynamics of common organic chromophores
 along the S$_1$ potential energy surface.
 
@@ -959,17 +958,17 @@ with $D$ being the non-adiabatic coupling matrix $D_{\mu \nu} =
 \dot{\mathbf{R}}_B \cdot \nabla_B S_{\mu \nu}$ and $\dot{\mathbf{R}}_B$ the
 velocity of atom $B$. The on-site blocks can be calculated taking the
 $\mathbf{R}_B \to 0$ limit, although neglecting those does not introduce
-significant changes to the dynamics.\cite{Niehaus:2005da}
+significant changes to the dynamics~\cite{Niehaus:2005da}.
 
 Unitary evolution of $\rho$ with no change in its eigenvalues would require
 $D^\dagger = -D$, which is normally not the case. Therefore, nuclear dynamics
 can induce electronic transitions leading to
-thermalization.\cite{Lin2009d} Unitary evolution is recovered when all nuclear
+thermalization~\cite{Lin2009d}. Unitary evolution is recovered when all nuclear
 velocities are equal (frozen-nuclei dynamics) and the second term in
 Eq.~\ref{eq:rhodot} vanishes.
 
 The force in the Ehrenfest-dynamics can be expressed
-as\cite{Todorov:2001ex,Niehaus:2005da}
+as~\cite{Todorov:2001ex,Niehaus:2005da}:
 %
 \begin{align}
   \mathbf{F}_A =& -\mathrm{Tr} \left\{ \rho \left( \nabla_A H^0 + \nabla_A S
@@ -984,16 +983,16 @@ as\cite{Todorov:2001ex,Niehaus:2005da}
 \end{align}
 where $\mathbf{E}(t)$ is the external electric field. In the present
 implementation, the velocity dependent terms have been neglected, they would
-vanish for a complete basis \cite{Niehaus:2005da} and are necessary for momentum
-but not for energy conservation.\cite{Todorov:2001ex}  When the system is
+vanish for a complete basis~\cite{Niehaus:2005da} and are necessary for momentum
+but not for energy conservation~\cite{Todorov:2001ex}.  When the system is
 driven externally by an electric field, a dipole coupling term is added in the
 time-dependent hamiltonian in Eq.~\ref{eq:rhodot}.
 
 Some applications that have been enabled by the speedup over time-dependent DFT
 are the simulation of the plasmon-driven breathing-mode excitation in silver
-nanoparticles of 1-2~nm in diameter \cite{Bonafe2017a} and the simulation of
+nanoparticles of 1-2~nm in diameter~\cite{Bonafe2017a} and the simulation of
 transient absorption pump-probe spectra in
-molecules.\cite{Bonafe2018,Hernandez2019}
+molecules~\cite{Bonafe2018,Hernandez2019}.
 
 Whenever a time propagation approach is used for the calculation of absorption
 spectra in the linear regime, this method is equivalent to calculations using
@@ -1006,7 +1005,7 @@ if these states are populated during the dynamics.
 \subsubsection{pp-RPA}
 
 An approximate particle-particle RPA scheme, the so called
-pp-DFTB,\cite{Kranz2017} is now implemented in DFTB+. Particle-particle RPA,
+pp-DFTB~\cite{Kranz2017}, is now implemented in DFTB+. Particle-particle RPA,
 based on the pairing matrix fluctuation formalism, has been shown to be an
 efficient approach for the accurate description of double and charge-transfer
 (CT) excitations involving the highest occupied molecular orbital (HOMO) (see
@@ -1050,7 +1049,7 @@ orthogonality between states in the perturbation operation:
 
 For fractionally occupied levels, the derivatives of the occupations for
 $\mathbf{q}=0$ perturbations (where change in the Fermi energy should be
-included) are then evaluated.\cite{nishimoto2017317}
+included) are then evaluated~\cite{nishimoto2017317}.
 
 Time dependent perturbations at an energy of $\hbar \omega$ can be written as
 \begin{align}
@@ -1076,10 +1075,10 @@ density matrix perturbation theory) are planned.
 \subsection{Non-equilibrium Green's function based electron transport}
 
 Electron transport in the steady-state regime is described in \dftbp{} within a
-non-equilibrium Green's function (NEGF) method \cite{pecchia2004, haug2008} as
-implemented in the code-independent libNEGF\cite{libnegf-repo} library.  The
+non-equilibrium Green's function (NEGF) method~\cite{pecchia2004, haug2008} as
+implemented in the code-independent libNEGF~\cite{libnegf-repo} library.  The
 density matrix is evaluated in terms of the electron-electron correlation matrix
-$G^{<}$,\cite{haug2008}
+$G^{<}$~\cite{haug2008},
 
 \begin{equation} \label{negf1}
   \rho = \frac{1}{2\pi \mathrm{i}} \int_{-\infty}^{+\infty} {G^{<}(E)
@@ -1092,12 +1091,12 @@ of charge injection from electrodes with an applied bias. The density matrix is
 then used to evaluate a real-space electron density distribution which is
 coupled self-consistently with a Poisson solver.  We perform a full band
 integration of Eq.~\ref{negf1}, utilizing a complex contour integral to reduce
-the number of integration points.\cite{pecchia2004} This allows for an implicit
+the number of integration points~\cite{pecchia2004}. This allows for an implicit
 description of dielectric properties which is crucial for an accurate modeling
-of ultra-scaled electron devices.\cite{markov2015,chu2018} After
+of ultra-scaled electron devices~\cite{markov2015,chu2018}. After
 self-consistency is achieved, the total current flowing in the system is
 calculated with the Landauer/Caroli formula for the non-interacting case, or
-with the Meir-Wingreen formula for the interacting case.\cite{haug2008} A
+with the Meir-Wingreen formula for the interacting case~\cite{haug2008}. A
 detailed description of the numerical algorithms and self-consistent coupling is
 presented in Ref.~\cite{pecchia2008}. Here we summarize the main features
 which might differentiate \dftbp{} from other nano-device simulation packages:
@@ -1120,8 +1119,8 @@ parameters for the system under investigation.
 \end{figure}
 
 Carbon-based materials and molecular junctions have been a typical use-case
-since the first integration of DFTB and NEGF.\cite{reimers2007, latessa2005,
-  penazzi2013} In Fig.~\ref{fig:dftb_negf1} we show a non-SCC calculation
+since the first integration of DFTB and NEGF~\cite{reimers2007, latessa2005,
+  penazzi2013}. In Fig.~\ref{fig:dftb_negf1} we show a non-SCC calculation
 example of transmission in linear response for a multi-terminal device. The
 simulated system is a cross-junction between two (10,10) Carbon nanotubes
 (CNTs). One CNT is tilted by 60$\degree$ with respect to the second and the
@@ -1129,42 +1128,42 @@ transmission is calculated by displacing one CNT along the axis of the other. Th
 the lattice repeat of 0.25~nm along the axis of the CNT.
 
 Currently we are working on extending transport functionality in \dftbp{} with
-electron-phonon coupling,\cite{pecchia2004b, pecchia2007, penazzi2016,
-  gagliardi2008} electron-photon coupling, spin polarized transport and phonon
-transport.\cite{medrano15b, medrano16, Martinez19, MedranoRev}
+electron-phonon coupling~\cite{pecchia2004b, pecchia2007, penazzi2016,
+  gagliardi2008}, electron-photon coupling, spin polarized transport and phonon
+transport~\cite{medrano15b, medrano16, Martinez19, MedranoRev}.
 
 Overall, DFTB-NEGF shares many similarities with DFT based implementations, and
 it also inherits some shortcomings the less experienced users should be aware
 of. For example, the open boundary treatment demands that external and
-non-equilibrium potentials are screened at the boundaries \cite{haug2008}.
+non-equilibrium potentials are screened at the boundaries~\cite{haug2008}.
 Therefore, the simulated system should be large enough compared to the screening
 length.  This condition is easily achieved with bulk metallic electrodes, but it
 can be difficult with low dimensional systems which exhibit poor screening. When
 this condition is not fulfilled, unphysical discontinuities in the potential may
 be obtained. Also, compared to band structure calculations, NEGF tends to
-converge with more difficulty.\cite{ozaki2010} Aside from these common
+converge with more difficulty~\cite{ozaki2010}. Aside from these common
 challenges, it is important that for DFTB-NEGF calculations any set of
 parameters should be evaluated by verifying at the least band structure
 properties in the energy range of interest. DFTB parameters fitted to reproduce
 total energies and forces might be excellent in those application but lack the
 necessary accuracy in the band structure. Depending on the degree of accuracy
 required, an {\it ad hoc} fitting for transport calculations could also be
-necessary, as for example in the case of silicon.\cite{markov2015b}
+necessary, as for example in the case of silicon~\cite{markov2015b}.
 
 \subsection{Extended Lagrangian Born-Oppenheimer dynamics}
 
 The Extended Lagrangian Born-Oppenheimer molecular dynamics (XLBOMD) framework
-allows\cite{ANiklasson08, ANiklasson17} molecular dynamics on the
+allows~\cite{ANiklasson08, ANiklasson17} molecular dynamics on the
 Born-Oppenheimer surface with only one hamiltonian diagonalization per time step without the
 need for self-consistency cycles.  The basic idea is based on a backward error
 analysis, i.e.\ instead of calculating approximate forces through an expensive
 non-linear iterative optimization procedure for an underlying exact potential
 energy surface, XL-BOMD calculates exact forces for an approximate ``shadow'' potential energy surface, $U({\bf R},n)$. This is approximated from a
-constrained minimization of a linearized Kohn-Sham energy functional.\cite{ANiklasson14,ANiklasson17} The functional is linearized around an
+constrained minimization of a linearized Kohn-Sham energy functional~\cite{ANiklasson14,ANiklasson17}. The functional is linearized around an
 approximate ground state density, $n$. This density is included as a dynamical
 field variable driven by an extended harmonic oscillator centered on an approximate ground state, $q[n]$, which is given by the minimization of the linearized Kohn-Sham functional. The harmonic well is
 defined in terms of a metric tensor, $T = K^T K$, where the kernel $K$ is
-assumed to be the inverse Jacobian of the residual function, $q[n] - n$.\cite{ANiklasson17}  The equations of motion are given by
+assumed to be the inverse Jacobian of the residual function, $q[n] - n$~\cite{ANiklasson17}.  The equations of motion are given by
 \begin{equation}
   M_I{{\bf \ddot R}}_I = -\left. \frac{\partial U({\bf R},n)}{\partial
     R_I}\right \vert_n \quad \text{and} \quad {\ddot n} = -\omega^2 K(q[n] - n).
@@ -1182,16 +1181,16 @@ identity matrix,
 For many problems this is a sufficiently accurate approximation. However, for
 the most challenging problems including simulations of reactive chemical systems
 or metals, the scaled delta function is not a sufficiently stable
-approximation. Improved approximations have been developed \cite{ANiklasson17}
+approximation. Improved approximations have been developed~\cite{ANiklasson17}
 and will be implemented in the \dftbp{} program in the near future.
 
 \subsection{Objective geometries}
 
-Objective structures\cite{James2006} (OS) describe geometries consisting of a
+Objective structures~\cite{James2006} (OS) describe geometries consisting of a
 set of identical cells, where corresponding atoms in different cells can be
 mapped onto each other by orthogonal transformation(s). Both finite and infinite
 OS are possible. Currently we describe
-structures\cite{James2006,Dumitrica2007,ZhangHuaDumitrica2008}
+structures~\cite{James2006,Dumitrica2007,ZhangHuaDumitrica2008}
 possessing $C_n$ rotational symmetry and a $C_m \otimes T$ screw axis, where $n
 \in \mathbb{N}^{*}$ and $m \in \mathbb{R}^{+}$:
 \begin{equation}
@@ -1206,12 +1205,12 @@ substantial computational savings, for example irrational values of $m$ lead to
 structures with a small OS cell but an infinitely long one dimensional periodic
 boundary condition (PBC), i.e.\ intractable purely as a $T$ operation. OBCs
 generalize symmetry-adapted Bloch sums for orbitals. As with molecular and
-periodic structures,\cite{aradi-jpca-2007} most expressions in \dftbp{} can be
+periodic structures~\cite{aradi-jpca-2007}, most expressions in \dftbp{} can be
 performed in real space, via the boundary-condition agnostic and sparse
 representation of matrices in real space, only solution of the hamiltonian
 requires dense matrices and $k$-points. For the long-range coulombic and
 dispersion interactions in DFTB we also require lattice sums that are
-generalized to these boundary conditions.\cite{Nikiforov2013}
+generalized to these boundary conditions~\cite{Nikiforov2013}.
 
 Further examples can be found in Refs.~\cite{Nikiforov2014,
   XU2019, DUMITRICA2019}, but here we demonstrate the
@@ -1249,7 +1248,7 @@ systems with a few thousand atoms. The main parameterizations, GFN\textit n-xTB,
 target molecular geometries, frequencies and non-covalent interactions following
 mostly a global and element-specific parameter only strategy. The historically
 first parameterization, GFN1-xTB, covers all elements up to $Z=86$ and is now
-supported in \dftbp{}. Its successor, GFN2-xTB,\cite{bannwarth2019} will also be
+supported in \dftbp{}. Its successor, GFN2-xTB~\cite{bannwarth2019}, will also be
 made available in the future.
 
 We briefly outline the xTB methods, for a more detailed discussion and
@@ -1258,7 +1257,7 @@ Refs.~\cite{grimme2017,bannwarth2019}.  The xTB core hamiltonian is
 constructed in a partially polarized STO-\textit nG basis set with diagonal
 terms made flexible by adding a dependence on the local chemical environment
 according to a coordination number (CN), similar to that used in
-DFT-D3:\cite{grimme2010}
+DFT-D3~\cite{grimme2010}:
 %
 \begin{equation}
   H_{\lambda\lambda} = H^l_A - H^l_{{CN}_{A}} {CN}_{A}.
@@ -1270,7 +1269,7 @@ proportional to the overlap between the corresponding basis functions.
 Both GFN1-xTB and GFN2-xTB include density fluctuation up to a third order
 diagonal terms, while the distance dependence of the Coulomb interaction within
 the isotropic second order term is described by a generalized form of the
-Mataga--Nishimoto--Ohno--Klopman\cite{klopman1964,ohno1964,mataga1957}
+Mataga--Nishimoto--Ohno--Klopman~\cite{klopman1964,ohno1964,mataga1957}
 expression. In GFN2-xTB the expansion of the second order density fluctuations
 goes beyond the usual isotropic energy terms and includes interactions up to
 $R^{-3}$, i.e., charge--dipole, dipole--dipole and charge--quadrupole
@@ -1278,25 +1277,25 @@ interactions, which significantly improves the description of inter-molecular
 interactions, like halogen bonds and hydrogen bonds, without the need to
 include force-field-like corrections as in DFTB or GFN1-xTB. It is planned to implement full multipole electrostatics with Ewald summation
 in \dftbp{} to enable GFN2-xTB and other generalized DFTB
-models.\cite{Bodrog2012}
+models~\cite{Bodrog2012}.
 
 GFN1-xTB and GFN2-xTB have been extensively tested for their target
-properties,\cite{bannwarth2019} further studies regarding structures for
-lanthanoid complexes\cite{bursch2017} and transition metal
-complexes\cite{bursch2019} have shown xTB methods to be robust for all its
+properties~\cite{bannwarth2019}, further studies regarding structures for
+lanthanoid complexes~\cite{bursch2017} and transition metal
+complexes~\cite{bursch2019} have shown xTB methods to be robust for all its
 parameterized elements.  Errors in this methods are very systematic, which can
 be used to devise correction schemes for off-target properties like reaction
-enthalpies.\cite{kromann2018}
+enthalpies~\cite{kromann2018}.
 
 \subsubsection{Outlook}
 
 In recent years machine learning has been utilized with \dftbp{}, usually to
-enhance the generation and description of the repulsive potentials
-\cite{Knaup2007, Kranz2018, Zhu2019, Huran2018, Goldman2018} or try to improve
-on electronic parameters.\cite{Li2018, Huran2018} Related $\Delta$-machine
-learning\cite{Ramakrishnan2015} methodologies based on neural network
-corrections for DFTB energies and forces have been also reported
-recently.\cite{Shen2016, Shen2018} We are currently in the process of developing
+enhance the generation and description of the repulsive
+potentials~\cite{Knaup2007, Kranz2018, Zhu2019, Huran2018, Goldman2018} or try
+to improve on electronic parameters~\cite{Li2018, Huran2018}. Related
+$\Delta$-machine learning~\cite{Ramakrishnan2015} methodologies based on neural
+network corrections for DFTB energies and forces have been also reported
+recently~\cite{Shen2016, Shen2018}. We are currently in the process of developing
 a new unified machine-learning framework, which for a target system allows
 optimal adaption of both the electronic and the repulsive contributions. Given
 the predicted DFTB model, one would still have to solve it in order to obtain
@@ -1325,13 +1324,13 @@ we move into the era of exascale computing.
 \subsubsection{The ELSI interface and supported solvers}
 \label{sec:elsi}
 
-ELSI\cite{elsi_yu_2018} features a unified software interface that simplifies
-the use of various high-performance eigensolvers,(ELPA\cite{elpa_marek_2014}
-EigenExa,\cite{eigenexa_imamura_2011} SLEPc,\cite{slepc_hernandez_2005}
-MAGMA\cite{magma_dongarra_2014}) and density matrix solvers
-(libOMM,\cite{libomm_corsetti_2014} PEXSI,\cite{pexsi_lin_2013}
-NTPoly\cite{ntpoly_dawson_2018}). We convert the sparse \dftbp{} $H$ and $S$
-structures\cite{aradi-jpca-2007} into either standard 2D block-cyclic
+ELSI~\cite{elsi_yu_2018} features a unified software interface that simplifies
+the use of various high-performance eigensolvers,(ELPA~\cite{elpa_marek_2014}
+EigenExa~\cite{eigenexa_imamura_2011}, SLEPc~\cite{slepc_hernandez_2005},
+MAGMA~\cite{magma_dongarra_2014}) and density matrix solvers
+(libOMM~\cite{libomm_corsetti_2014}, PEXSI~\cite{pexsi_lin_2013},
+NTPoly~\cite{ntpoly_dawson_2018}). We convert the sparse \dftbp{} $H$ and $S$
+structures~\cite{aradi-jpca-2007} into either standard 2D block-cyclic
 distributed dense matrices or sparse 1D block distributed matrices compatible
 with the ELSI interface. All $k$-points and spin channels are then solved in
 parallel.
@@ -1339,7 +1338,7 @@ parallel.
 The ELSI-supported solvers, when applied in appropriate cases, can lead to a substantial
 speedup over the default distributed parallel diagonalization method in \dftbp{}, i.e.,
 eigensolvers in the ScaLAPACK
-library.\cite{scalapack_blackford_1997,dc_tisseur_1999,mrrr_vomel_2010}
+library~\cite{scalapack_blackford_1997,dc_tisseur_1999,mrrr_vomel_2010}.
 Figure~\ref{fig:solvers} demonstrates two examples: Non-self-consistent-charge,
 spin-non-polarized, $\Gamma$-point calculations for a \ce{C64000} nanotube (CNT)
 and a \ce{Si6750} supercell, with 25600 and 27000 basis functions, respectively.
@@ -1361,10 +1360,10 @@ CNT model with three solvers, the pdsyevr eigensolver in the MKL implementation
 of ScaLAPACK, the ELPA2 eigensolver and the PEXSI density matrix solver. Here
 both the MKL's version of pdsyevr eigensolver and the ELPA2 eigensolver adopt a
 two-stage tri-diagonalization
-algorithm.\cite{2stage_bischof_1994,elpa_marek_2014,mkl_arturov_2018} In terms
+algorithm~\cite{2stage_bischof_1994,elpa_marek_2014,mkl_arturov_2018}. In terms
 of performance, ELPA2 and MKL pdsyevr are similar, while both are outperformed
 by the PEXSI solver by more than an order of magnitude. The
-PEXSI\cite{pexsi_lin_2013} method directly constructs the density matrix from
+PEXSI~\cite{pexsi_lin_2013} method directly constructs the density matrix from
 the hamiltonian and overlap matrices with a computational complexity of
 $O(N^{\sfrac{(d+1)}{2}})$ for $d=1\ldots3$D systems. This reduced scaling
 property stems from sparse linear algebra, not the existence of an energy
@@ -1376,7 +1375,7 @@ shows greater performance than the MKL pdsyevr and ELPA2 eigensolvers. Around
 its massively parallel sparse matrix multiplication routine, NTPoly implements
 various linear scaling density matrix purification methods, including the
 $2^\text{nd}$ order trace-resetting purification method
-(TRS2)\cite{ANiklasson02} used here. While PEXSI is not
+(TRS2)~\cite{ANiklasson02} used here. While PEXSI is not
 particularly suited for 3D systems, NTPoly offers an alternative as long as the
 system has a non-trivial energy gap.
 
@@ -1388,7 +1387,7 @@ calculations corresponds to the diagonalization of the hamiltonian matrix,
 taking in the order of 90-95\% of the total running time. The hybrid CPU--GPU
 implementation in \dftbp{} replaces the LAPACK-based eigensolver with a GPU
 eigensolver based on the divide-and-conquer algorithm as implemented in
-MAGMA.\cite{TOMOV2010232}
+MAGMA~\cite{TOMOV2010232}.
 
 Benchmarking of the code shows that at least 5000 basis functions are necessary
 to exploit the power of the GPUs and to produce an observable speedup with
@@ -1427,20 +1426,20 @@ files and starts an individual \dftbp{} program for each of the
 inputs. After \dftbp{} has finished, the driver analyses the created output
 files and extracts the necessary information from those. \dftbp{} had been
 interfaced using file based communication to, among others, the
-phonopy\cite{phonopy} code for finite difference harmonic and anharmonic phonon
+phonopy~\cite{phonopy} code for finite difference harmonic and anharmonic phonon
 calculations and the Atomic Simulation Environment (ASE)
-package\cite{larsen-jpcm-2017} (a set of tools and Python modules for setting
+package~\cite{larsen-jpcm-2017} (a set of tools and Python modules for setting
 up, manipulating, running, visualizing and analyzing atomistic simulations).
 
 \subsection{Socket interface}
 
-The i-PI\cite{ipi} interface for communication with external driving codes is
+The i-PI~\cite{ipi} interface for communication with external driving codes is
 supported by \dftbp{}. \dftbp{} can then be driven directly instead of
 using file I/O. The initial input to \dftbp{} specifies the boundary conditions,
 type of calculation and chemical information for atoms, the code then waits to
 be externally contacted. This kind of communication with \dftbp{} can be used
-by, among others, the i-PI universal force engine package\cite{ipi} and
-ASE.\cite{larsen-jpcm-2017}
+by, among others, the i-PI universal force engine package~\cite{ipi} and
+ASE~\cite{larsen-jpcm-2017}.
 
 
 \subsection{\dftbp{} library, QM/MM simulations}
@@ -1451,9 +1450,9 @@ DFTB quantum-chemical models may be utilized as a QM engine in hybrid
 quantum-mechanical / molecular mechanical (QM/MM) approaches.  This allows for
 example efficient simulations of chemical processes taking place in bio-molecular
 complexes.  The \dftbp{} library interface has been connected to the
-Gromacs\cite{Gromacs7} MM-simulation software package. (The Gromacs part of the
+Gromacs~\cite{Gromacs7} MM-simulation software package. (The Gromacs part of the
 integration is contained in a fork of the Gromacs main
-branch\cite{gromacs-dftbplus-repo}) At the start of the simulation, the \dftbp{}
+branch~\cite{gromacs-dftbplus-repo}) At the start of the simulation, the \dftbp{}
 input file is read in, and a DFTB calculation environment is created, containing
 all of the necessary information (parameters), but no atomic coordinates yet.
 In every step of MD simulation or of energy minimization, the calculation of
@@ -1471,12 +1470,12 @@ passed to \dftbp{}, which is then invoked at every SCC iteration to update the
 potential by the driver program whenever the QM charges
 change. In the \dftbp{}/Gromacs integration we use this technique to calculate
 the QM-QM electrostatic interactions in periodic systems with the highly
-efficient Particle Mesh Ewald method\cite{Darden1993} implemented in Gromacs.
+efficient Particle Mesh Ewald method~\cite{Darden1993} implemented in Gromacs.
 
 \subsubsection{DL\_POLY\_4 integration with MPI support}
 
 DL\_POLY\_4 is a general-purpose package for classical molecular dynamics (MD)
-simu\-la\-tions.\cite{dl_poly2006} In conjunction with the recent extension of
+simu\-la\-tions~\cite{dl_poly2006}. In conjunction with the recent extension of
 \dftbp{}'s API, DL\_POLY\_4.10 supports the use of \dftbp{} for self-consistent
 force calculations in place of empirical force fields, for Born-Oppenheimer
 molecular dynamics.
@@ -1510,14 +1509,14 @@ simulation.
 Molecular dynamics is often plagued by high energy barriers that trap the
 nuclear ensemble in one or several local minima. This leads to inefficient or
 inadequate sampling of the ensemble and thus inaccurate predictions of
-physicochemical properties.\cite{RN1,RN2,RN3} This `timescale' problem is
+physicochemical properties~\cite{RN1,RN2,RN3}. This `timescale' problem is
 typical for rare-event systems, or those in which ergodicity of a particular
 state is impeded by the local topology of the potential energy surface. A
 variety of methods have been conceived to circumvent this, including
-umbrella sampling\cite{RN8} and meta-dynamics.\cite{RN13}
+umbrella sampling~\cite{RN8} and meta-dynamics~\cite{RN13}.
 
 Umbrella sampling and meta-dynamics can now be performed using \dftbp{} via its
-interface to the PLUMED plugin.\cite{RN15,RN16} Using PLUMED, MD trajectories
+interface to the PLUMED plugin~\cite{RN15,RN16}. Using PLUMED, MD trajectories
 generated in \dftbp{} can be analyzed, sampled and biased in a variety of ways
 along user-defined collective variables (CV), enabling accelerated MD
 simulations and determination of the free energy surface. A CV is a subspace of
@@ -1528,7 +1527,7 @@ constraint of MD configurations to specific areas on the potential energy
 surface. The utility of the \dftbp{}/PLUMED interface has been demonstrated on
 several challenging systems, including malonaldehyde intra-molecular proton
 transfer (Fig.~\ref{fig:mtd}), corannulene bowl inversion and the diffusion of
-epoxide groups on graphene.\cite{RN16}
+epoxide groups on graphene~\cite{RN16}.
 
 \begin{figure}[htbp]
   \centering
@@ -1546,7 +1545,7 @@ epoxide groups on graphene.\cite{RN16}
 \subsection{\dftbp{} in Materials Studio}
 
 \dftbp{} is included as a module in the commercial modeling and simulation
-software package; BIOVIA Materials Studio (MS).\cite{BIOVIA-MS} \dftbp{} runs as
+software package; BIOVIA Materials Studio (MS)~\cite{BIOVIA-MS}. \dftbp{} runs as
 an in-process energy server; supplying energies, forces, and stresses to drive
 the MS in-house simulations tools. Supported tasks include energy calculation,
 geometry optimization, molecular dynamics, electron transport calculation,
@@ -1557,12 +1556,12 @@ integrates closely with the data model and the Materials Studio Visualizer,
 allowing the user to construct structures and start calculations quickly, with
 fully-automated creation of the \dftbp{} input file.  The \dftbp{} module is
 also supported in the MS MaterialsScript interface and the Materials Studio
-Collection for Pipeline Pilot,\cite{BIOVIA-MSC} allowing creation of more
-complicated workflows.\cite{C7RA04120A,C6CP03987A}
+Collection for Pipeline Pilot~\cite{BIOVIA-MSC}, allowing creation of more
+complicated workflows~\cite{C7RA04120A,C6CP03987A}.
 
 The \dftbp{} parameterization workflow in MS supports fitting of both electronic
 parameters and repulsive pair potentials, using DFT calculations with the DMol3
-module \cite{Delley1,Delley2} as a reference. The \dftbp{} module includes
+module~\cite{Delley1,Delley2} as a reference. The \dftbp{} module includes
 scripts for validation of parameters in terms of band structure, bond length,
 bond angles, and so on, as well as visualization for the hamiltonian, overlap
 matrix elements, and the repulsive pair potentials. The parameterization tools
@@ -1592,7 +1591,7 @@ languages with higher abstraction levels (C++ or Fortran 95 and newer versions).
 In order to eliminate developer need to pass redundant information (and to
 reduce associated programming bugs), we have developed modern Fortran wrappers
 around the MPI-routines. These have been collected in the
-MPIFX-library,\cite{mpifx} which is an independent software project outside of the
+MPIFX-library~\cite{mpifx}, which is an independent software project outside of the
 \dftbp{} software suite, being licensed under the more permissive
 BSD-license. It enables shorter MPI-calls by automatically deducing data types
 and data sizes from the call signature. Additionally, several MPI parameters
@@ -1616,7 +1615,7 @@ the routine would stop the code in case of any errors.
 
 Likewise the commonly used parallel linear algebra library ScaLAPACK uses
 Fortran 77 type interfaces. The open source SCALAPACKFX
-library\cite{scalapackfx} offers higher level modern Fortran wrappers around
+library~\cite{scalapackfx} offers higher level modern Fortran wrappers around
 routines used by \dftbp{}.
 
 
@@ -1625,12 +1624,12 @@ Although the latest Fortran standard (Fortran 2018) offers many constructs to
 support modern programming paradigms, it does not allow for generic template
 based programming. This would avoid substantial code duplication and offer
 useful meta-programming capabilities for Fortran programmers. We have developed
-the Python based pre-processor, Fypp,\cite{fypp-repo} which offers a workaround
+the Python based pre-processor, Fypp~\cite{fypp-repo}, which offers a workaround
 for the missing features. Fypp is used during the build process to
 turn the meta-programming constructs into standard Fortran code. The
 Fypp project is independent of the \dftbp{} software package and is licensed
 under the BSD-license, being also used by other scientific software packages,
-for example by the CP2K code\cite{cp2k-repo} and both the MPIFX and the
+for example by the CP2K code~\cite{cp2k-repo} and both the MPIFX and the
 SCALAPACKFX libraries.
 
 
