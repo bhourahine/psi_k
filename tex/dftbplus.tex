@@ -1324,16 +1324,17 @@ we move into the era of exascale computing.
 \subsubsection{The ELSI interface and supported solvers}
 \label{sec:elsi}
 
-ELSI~\cite{elsi_yu_2018} features a unified software interface that simplifies
-the use of various high-performance eigensolvers,(ELPA~\cite{elpa_marek_2014}
-EigenExa~\cite{eigenexa_imamura_2011}, SLEPc~\cite{slepc_hernandez_2005},
+ELSI~\cite{elsi_yu_2018} features a unified software interface that
+simplifies the use of various high-performance eigensolvers,
+(ELPA~\cite{elpa_marek_2014}, EigenExa~\cite{eigenexa_imamura_2011},
+SLEPc~\cite{slepc_hernandez_2005} and
 MAGMA~\cite{magma_dongarra_2014}) and density matrix solvers
-(libOMM~\cite{libomm_corsetti_2014}, PEXSI~\cite{pexsi_lin_2013},
-NTPoly~\cite{ntpoly_dawson_2018}). We convert the sparse \dftbp{} $H$ and $S$
-structures~\cite{aradi-jpca-2007} into either standard 2D block-cyclic
-distributed dense matrices or sparse 1D block distributed matrices compatible
-with the ELSI interface. All $k$-points and spin channels are then solved in
-parallel.
+(libOMM~\cite{libomm_corsetti_2014}, PEXSI~\cite{pexsi_lin_2013} and
+NTPoly~\cite{ntpoly_dawson_2018}). We convert the sparse \dftbp{} $H$
+and $S$ structures~\cite{aradi-jpca-2007} into either standard 2D
+block-cyclic distributed dense matrices or sparse 1D block distributed
+matrices compatible with the ELSI interface. All $k$-points and spin
+channels are then solved in parallel.
 
 The ELSI-supported solvers, when applied in appropriate cases, can lead to a substantial
 speedup over the default distributed parallel diagonalization method in \dftbp{}, i.e.,
@@ -1654,7 +1655,7 @@ modified and extended by everybody.
   support from the Vice-rectory for research of the University of Costa Rica
   (grant 115-B9-461) and the Oak Ridge Leadership Computing Facility at Oak
   Ridge National Laboratory (ORNL), which is managed by UT-Battelle, LLC, for
-  DOE under Contract No. DE-AC05- 00OR22725.  S.~Irle acknowledges support from
+  DOE under Contract No. DE-AC05-00OR22725.  S.~Irle acknowledges support from
   the U.S.\ Department of Energy, Office of Science, Office of Basic Energy
   Sciences, Chemical Sciences, Geosciences, and Biosciences Division, Geoscience
   Program.  M.~Y.~Deshaye and T.~Kowalczyk acknowledge support from a National
